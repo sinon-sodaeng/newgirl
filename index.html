@@ -994,6 +994,82 @@ footer{
   min-height:255px!important;
 }
 
+
+
+/* v46: unify actual visible tab UI sizes, not iframe height */
+#membersTab,
+#pickerTab,
+#ladderTab{
+  height:auto!important;
+  min-height:auto!important;
+}
+
+/* members list: 4 full rows visible without being cut */
+#membersTab .member-grid{
+  height:940px!important;
+  max-height:940px!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  grid-template-columns:repeat(auto-fill,minmax(170px,1fr))!important;
+  gap:14px!important;
+  padding:6px 6px 14px!important;
+  align-content:start!important;
+}
+#membersTab .member-card{
+  height:220px!important;
+  min-height:220px!important;
+  padding:12px 10px 10px!important;
+  border-radius:24px!important;
+}
+#membersTab .avatar{
+  width:120px!important;
+  height:120px!important;
+  border-radius:22px!important;
+}
+#membersTab .member-card strong{
+  font-size:20px!important;
+  min-height:30px!important;
+}
+#membersTab .member-card span{
+  font-size:14px!important;
+}
+
+/* picker / ladder: match members visible UI height */
+#pickerTab .picker-box,
+#ladderTab .ladder-box{
+  height:940px!important;
+  min-height:940px!important;
+  max-height:940px!important;
+  overflow:hidden!important;
+}
+
+/* picker internal scroll only */
+#pickerSelectView{
+  height:auto!important;
+  max-height:none!important;
+  flex:1 1 auto!important;
+  min-height:0!important;
+  overflow:hidden!important;
+}
+#pickerSelectView .picker-grid{
+  max-height:none!important;
+  overflow-y:auto!important;
+}
+
+/* ladder internal area adjusted to same panel height */
+#ladderTab .ladder-stage{
+  min-height:620px!important;
+  max-height:620px!important;
+  overflow:hidden!important;
+}
+#ladderTab #ladderCanvas{
+  height:500px!important;
+}
+
+footer{
+  margin-top:34px!important;
+}
+
 </style>
 </head>
 <body id="home"><div class="bg-hearts"><span>♡</span><span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♡</span></div><main class="wrap"><section class="hero"><h1>뉴걸시티 Discord</h1></section>
@@ -1150,7 +1226,7 @@ function ladderGeom(){
   const c=ladderCanvas;
   const stage=document.getElementById('ladderStage');
   const w=Math.max(620, Math.min(820, Math.round((stage&&stage.clientWidth?stage.clientWidth:860)-24)));
-  const h=560;
+  const h=500;
   if(c.width!==w)c.width=w;
   if(c.height!==h)c.height=h;
   const n=ladderCount;
@@ -1437,7 +1513,7 @@ function ladderGeom(){
   const c=ladderCanvas;
   const stage=document.getElementById('ladderStage');
   const w=Math.max(620, Math.min(820, Math.round((stage&&stage.clientWidth?stage.clientWidth:860)-24)));
-  const h=560;
+  const h=500;
   if(c.width!==w)c.width=w;
   if(c.height!==h)c.height=h;
   const n=ladderCount;
@@ -1555,7 +1631,7 @@ pickerRender();
     const c = ladderCanvas;
     const w = ladderUsableWidth();
     if(c.width !== w) c.width = w;
-    if(c.height !== 560) c.height = 560;
+    if(c.height !== 500) c.height = 500;
 
     const n = ladderCount;
     const side = Math.max(58, Math.min(86, w * 0.075));
