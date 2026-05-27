@@ -671,6 +671,42 @@ body:after{
   }
 }
 
+
+
+/* ladder iframe recalculation hard fix */
+#ladderTab .ladder-stage{
+  overflow-x:hidden!important;
+}
+#ladderTab .ladder-inner{
+  margin:0 auto!important;
+  padding:42px 0 54px!important;
+}
+#ladderTab #ladderCanvas{
+  display:block!important;
+  height:430px!important;
+  min-width:0!important;
+}
+#ladderTab .ladder-top-inputs,
+#ladderTab .ladder-bottom-inputs{
+  left:0!important;
+  right:auto!important;
+}
+#ladderTab .ladder-top-inputs input,
+#ladderTab .ladder-bottom-inputs textarea{
+  left:var(--x)!important;
+  transform:translateX(-50%)!important;
+}
+
+
+/* final ladder iframe compact fix */
+#ladderTab .ladder-box{padding:20px 18px 26px!important;min-height:780px!important}
+#ladderTab .ladder-stage{max-width:820px!important;margin:0 auto!important;min-height:500px!important;overflow:hidden!important;padding:10px!important}
+#ladderTab .ladder-inner{width:820px;min-width:620px;max-width:820px;margin:0 auto!important;padding:38px 0 50px!important}
+#ladderTab #ladderCanvas{width:100%!important;min-width:0!important;height:380px!important;margin:0!important}
+#ladderTab .ladder-top-inputs,#ladderTab .ladder-bottom-inputs{height:0!important;position:absolute!important;left:0!important;width:100%!important;min-width:0!important}
+#ladderTab .ladder-top-inputs input{width:70px!important;height:30px!important;font-size:12px!important}
+#ladderTab .ladder-bottom-inputs textarea{width:70px!important;height:38px!important;font-size:11px!important;line-height:24px!important}
+
 </style>
 </head>
 <body id="home"><div class="bg-hearts"><span>♡</span><span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♡</span></div><main class="wrap"><section class="hero"><h1>뉴걸시티 Discord</h1></section>
@@ -688,7 +724,7 @@ body:after{
     <div class="ladder-stage" id="ladderStage">
       <div class="ladder-inner">
         <div class="ladder-top-inputs" id="ladderTopInputs"></div>
-        <canvas id="ladderCanvas" width="1000" height="500"></canvas>
+        <canvas id="ladderCanvas" width="820" height="380"></canvas>
         <div class="ladder-bottom-inputs" id="ladderBottomInputs"></div>
       </div>
     </div>
@@ -702,7 +738,7 @@ const M=members.map(x=>({name:x[0],image:'./'+x[1]+'.png',link:x[2],time:x[3],co
 members.splice(0,members.length,...M);
 memberGrid.innerHTML=members.map((m,i)=>`<a class="member-card" href="#member${i+1}"><img class="avatar" src="${m.image}"><strong>${m.cardName||m.name}</strong><span>프로필 보기</span></a>`).join('');
 profiles.innerHTML=members.map((m,i)=>`<section id="member${i+1}" class="profile"><div class="profile-head"><img class="profile-img" src="${m.image}"><div><h2>${m.name}</h2></div></div><div class="info"><div><b>닉네임</b><br>${m.name}</div><div><b>방송시간</b><br>${m.time}</div><div><b>모집중인 컨텐츠</b><br>${m.contentLink?`<a href="${m.contentLink}" target="_blank">${m.contentTitle}</a>`:'-'}</div></div><div class="buttons"><a class="btn home" href="#home">닫기</a><a class="btn station" href="${m.link}" target="_blank">방송국 링크</a></div></section>`).join('');
-function showTab(t){membersTab.classList.toggle('hidden',t!='members');pickerTab.classList.toggle('hidden',t!='picker');ladderTab.classList.toggle('hidden',t!='ladder');document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',(t=='members'?0:t=='picker'?1:2)==i));if(t=='ladder')setTimeout(ladderDraw,60)}
+function showTab(t){membersTab.classList.toggle('hidden',t!='members');pickerTab.classList.toggle('hidden',t!='picker');ladderTab.classList.toggle('hidden',t!='ladder');document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',(t=='members'?0:t=='picker'?1:2)==i));if(t=='ladder')setTimeout(()=>{ladderRenderItems();ladderDraw();},80)}
 let pickerMode='random',pickerStep='member',pickerJoined=[],pickerLeaders=[],pickerCount=3,pickerResultList=[],pickerTargetResults=[],pickerLastPool=[],pickerRevealSpeed=1,pickerCurrentTeams=null,pickerDrawInterval=null,pickerMixInterval=null;
 function dn(m){return (m.cardName||m.name).replace('<br>',' ')}function img(i){return members[i].image}function nm(i){return members[i].cardName||members[i].name}
 function pickerCard(i,s){return `<div class="picker-card" onclick="${s?'pickerRemove':'pickerAdd'}(${i})"><img src="${img(i)}" onerror="this.style.visibility='hidden'"><div>${nm(i)}</div></div>`}
@@ -722,9 +758,13 @@ function ladderRenderItems(){
   ladderCountText.textContent=ladderCount;
   let oldN=[...document.querySelectorAll('.ladderNameInput')].map(i=>i.value);
   let oldR=[...document.querySelectorAll('.ladderRewardInput')].map(i=>i.value);
-  let gap=(1000-164)/(ladderCount-1);
-  ladderTopInputs.innerHTML=Array.from({length:ladderCount},(_,i)=>`<input class="ladderNameInput" style="--x:${82+i*gap}px" value="${oldN[i]||''}" placeholder="이름 ${i+1}" title="적용 후 누르면 출발">`).join('');
-  ladderBottomInputs.innerHTML=Array.from({length:ladderCount},(_,i)=>`<textarea class="ladderRewardInput" style="--x:${82+i*gap}px" placeholder="보상 ${i+1}">${oldR[i]||''}</textarea>`).join('');
+  let g=ladderGeom();
+  ladderTopInputs.style.width=ladderCanvas.width+'px';
+  ladderBottomInputs.style.width=ladderCanvas.width+'px';
+  document.querySelector('.ladder-inner').style.width=ladderCanvas.width+'px';
+  document.querySelector('.ladder-inner').style.minWidth=ladderCanvas.width+'px';
+  ladderTopInputs.innerHTML=Array.from({length:ladderCount},(_,i)=>`<input class="ladderNameInput" style="--x:${g.left+i*g.gap}px" value="${oldN[i]||''}" placeholder="이름 ${i+1}" title="적용 후 누르면 출발">`).join('');
+  ladderBottomInputs.innerHTML=Array.from({length:ladderCount},(_,i)=>`<textarea class="ladderRewardInput" style="--x:${g.left+i*g.gap}px" placeholder="보상 ${i+1}">${oldR[i]||''}</textarea>`).join('');
 }
 function ladderChangeCount(n){ladderCount=Math.max(2,Math.min(10,ladderCount+n));ladderRenderItems();ladderRetry();}
 function ladderNames(){return [...document.querySelectorAll('.ladderNameInput')].map((i,idx)=>i.value.trim()||`이름 ${idx+1}`)}
@@ -812,7 +852,17 @@ function ladderStart(){
   document.querySelectorAll('.ladderRewardInput').forEach(el=>{el.readOnly=true;});
   ladderDraw();
 }
-function ladderGeom(){const c=ladderCanvas,w=c.width,h=c.height,n=ladderCount;return{top:18,bottom:h-18,left:82,right:w-82,gap:(w-164)/(n-1),rowGap:(h-36)/(ladderData.rows||24)};}
+function ladderGeom(){
+  const c=ladderCanvas;
+  const stage=document.getElementById('ladderStage');
+  const w=Math.max(620, Math.min(820, Math.round((stage&&stage.clientWidth?stage.clientWidth:860)-24)));
+  const h=380;
+  if(c.width!==w)c.width=w;
+  if(c.height!==h)c.height=h;
+  const n=ladderCount;
+  const side=58;
+  return{top:16,bottom:h-16,left:side,right:w-side,gap:(w-side*2)/(n-1),rowGap:(h-32)/(ladderData.rows||24)};
+}
 function ladderTrace(start){
   let g=ladderGeom(), col=start, pts=[{x:g.left+col*g.gap,y:g.top}];
   let currentRow=0;
@@ -1089,7 +1139,17 @@ function ladderStart(){
   document.querySelectorAll('.ladderRewardInput').forEach(el=>{el.readOnly=true;});
   ladderDraw();
 }
-function ladderGeom(){const c=ladderCanvas,w=c.width,h=c.height,n=ladderCount;return{top:18,bottom:h-18,left:82,right:w-82,gap:(w-164)/(n-1),rowGap:(h-36)/(ladderData.rows||24)};}
+function ladderGeom(){
+  const c=ladderCanvas;
+  const stage=document.getElementById('ladderStage');
+  const w=Math.max(620, Math.min(820, Math.round((stage&&stage.clientWidth?stage.clientWidth:860)-24)));
+  const h=380;
+  if(c.width!==w)c.width=w;
+  if(c.height!==h)c.height=h;
+  const n=ladderCount;
+  const side=58;
+  return{top:16,bottom:h-16,left:side,right:w-side,gap:(w-side*2)/(n-1),rowGap:(h-32)/(ladderData.rows||24)};
+}
 function ladderTrace(start){
   let g=ladderGeom(), col=start, pts=[{x:g.left+col*g.gap,y:g.top}];
   let currentRow=0;
@@ -1183,17 +1243,29 @@ setTimeout(()=>{ladderRenderItems();ladderDraw();},0);
 
 pickerRender();
 </script>
+
+
+
 <script>
 (function(){
-  const oldLadderGeom = window.ladderGeom;
+  function ladderUsableWidth(){
+    const stage = document.getElementById('ladderStage');
+    const box = document.querySelector('#ladderTab .ladder-box');
+    let w = 1000;
+    if(stage && stage.clientWidth > 100) w = stage.clientWidth - 20;
+    else if(box && box.clientWidth > 100) w = box.clientWidth - 44;
+    return Math.max(620, Math.round(w));
+  }
+
   window.ladderGeom = function(){
     const c = ladderCanvas;
-    const inner = document.querySelector('.ladder-inner');
-    const w = Math.max(520, Math.round(inner ? inner.clientWidth : c.clientWidth || 1000));
+    const w = ladderUsableWidth();
     if(c.width !== w) c.width = w;
-    c.height = 420;
+    if(c.height !== 430) c.height = 430;
+
     const n = ladderCount;
-    const side = Math.max(54, Math.min(82, w * 0.08));
+    const side = Math.max(58, Math.min(86, w * 0.075));
+
     return {
       top:18,
       bottom:c.height-18,
@@ -1204,22 +1276,43 @@ pickerRender();
     };
   };
 
-  const oldLadderRenderItems = window.ladderRenderItems;
   window.ladderRenderItems = function(){
-    ladderCountText.textContent=ladderCount;
-    let oldN=[...document.querySelectorAll('.ladderNameInput')].map(i=>i.value);
-    let oldR=[...document.querySelectorAll('.ladderRewardInput')].map(i=>i.value);
+    ladderCountText.textContent = ladderCount;
+
+    let oldN = [...document.querySelectorAll('.ladderNameInput')].map(i=>i.value);
+    let oldR = [...document.querySelectorAll('.ladderRewardInput')].map(i=>i.value);
+
+    const g = ladderGeom();
+    const w = ladderCanvas.width;
+
     const inner = document.querySelector('.ladder-inner');
-    const w = Math.max(520, Math.round(inner ? inner.clientWidth : 1000));
-    const side = Math.max(54, Math.min(82, w * 0.08));
-    let gap=(w-side*2)/(ladderCount-1);
-    ladderTopInputs.innerHTML=Array.from({length:ladderCount},(_,i)=>`<input class="ladderNameInput" style="--x:${side+i*gap}px" value="${oldN[i]||''}" placeholder="이름 ${i+1}" title="적용 후 누르면 출발">`).join('');
-    ladderBottomInputs.innerHTML=Array.from({length:ladderCount},(_,i)=>`<textarea class="ladderRewardInput" style="--x:${side+i*gap}px" placeholder="보상 ${i+1}">${oldR[i]||''}</textarea>`).join('');
+    if(inner){
+      inner.style.width = w + 'px';
+      inner.style.minWidth = w + 'px';
+      inner.style.maxWidth = w + 'px';
+    }
+
+    ladderTopInputs.style.width = w + 'px';
+    ladderTopInputs.style.minWidth = w + 'px';
+    ladderBottomInputs.style.width = w + 'px';
+    ladderBottomInputs.style.minWidth = w + 'px';
+
+    ladderTopInputs.innerHTML = Array.from({length:ladderCount},(_,i)=>{
+      const x = g.left + i * g.gap;
+      return `<input class="ladderNameInput" style="--x:${x}px" value="${oldN[i]||''}" placeholder="이름 ${i+1}" title="적용 후 누르면 출발">`;
+    }).join('');
+
+    ladderBottomInputs.innerHTML = Array.from({length:ladderCount},(_,i)=>{
+      const x = g.left + i * g.gap;
+      return `<textarea class="ladderRewardInput" style="--x:${x}px" placeholder="보상 ${i+1}">${oldR[i]||''}</textarea>`;
+    }).join('');
   };
 
   window.addEventListener('resize', function(){
-    if(typeof ladderRenderItems === 'function') ladderRenderItems();
-    if(typeof ladderDraw === 'function') ladderDraw();
+    if(!document.getElementById('ladderTab').classList.contains('hidden')){
+      ladderRenderItems();
+      ladderDraw();
+    }
   });
 })();
 </script>
