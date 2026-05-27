@@ -581,6 +581,138 @@ body:after{
   }
 }
 
+
+
+/* page scroll restore fix */
+html, body{
+  height:auto!important;
+  min-height:100%!important;
+  overflow-y:auto!important;
+}
+body{
+  overflow-x:hidden!important;
+}
+
+/* iframe-friendly picker scroll */
+#pickerTab,
+.picker-box{
+  min-height:0!important;
+}
+#pickerSelectView{
+  max-height:560px!important;
+  overflow-y:auto!important;
+  padding-right:6px!important;
+}
+#pickerSelectView .picker-section{
+  min-height:0!important;
+}
+#pickerSelectView .picker-grid{
+  max-height:430px!important;
+  overflow-y:auto!important;
+}
+
+
+
+/* compact picker tab for fixed-height iframe */
+#pickerTab .picker-box{
+  max-height:560px!important;
+  overflow:hidden!important;
+  padding:14px!important;
+}
+
+#pickerTab .picker-box h2{
+  font-size:24px!important;
+  margin:4px 0 8px!important;
+}
+
+#pickerTab .picker-top{
+  margin:6px 0 8px!important;
+  gap:8px!important;
+}
+
+#pickerTab .mode-btn{
+  padding:8px 14px!important;
+  font-size:15px!important;
+}
+
+#pickerTab .picker-controls,
+#pickerTab .picker-count{
+  margin:6px 0!important;
+  gap:8px!important;
+}
+
+#pickerTab .picker-controls button,
+#pickerTab .picker-count button{
+  min-height:38px!important;
+  padding:0 14px!important;
+  border-radius:14px!important;
+  font-size:14px!important;
+}
+
+#pickerTab .picker-count button{
+  width:38px!important;
+  min-width:38px!important;
+}
+
+#pickerTab #pickerSelectView{
+  max-height:365px!important;
+  overflow:hidden!important;
+  gap:10px!important;
+}
+
+#pickerTab #pickerSelectView .picker-section{
+  padding:10px!important;
+  border-radius:18px!important;
+  min-height:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+
+#pickerTab #pickerSelectView .picker-section h3{
+  font-size:18px!important;
+  margin:0 0 8px!important;
+  flex:0 0 auto!important;
+}
+
+#pickerTab #pickerSelectView .picker-grid{
+  grid-template-columns:repeat(auto-fill,minmax(88px,1fr))!important;
+  gap:8px!important;
+  max-height:305px!important;
+  overflow-y:auto!important;
+  padding-right:6px!important;
+  min-height:0!important;
+}
+
+#pickerTab .picker-card{
+  padding:8px!important;
+  border-radius:16px!important;
+}
+
+#pickerTab .picker-card img{
+  width:58px!important;
+  height:58px!important;
+  border-radius:15px!important;
+}
+
+#pickerTab .picker-card div{
+  margin-top:5px!important;
+  font-size:13px!important;
+  line-height:1.1!important;
+}
+
+@media(max-width:850px){
+  #pickerTab .picker-box{
+    max-height:620px!important;
+  }
+  #pickerTab #pickerSelectView{
+    max-height:430px!important;
+    overflow-y:auto!important;
+  }
+  #pickerTab #pickerSelectView .picker-grid{
+    max-height:180px!important;
+  }
+}
+
 </style>
 </head>
 <body id="home"><div class="bg-hearts"><span>♡</span><span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♡</span></div><main class="wrap"><section class="hero"><h1>뉴걸시티 Discord</h1></section>
