@@ -851,6 +851,56 @@ footer{
   height:560px!important;
 }
 
+
+
+/* random picker no-cut fix: keep same outer height, scroll only inside random tab */
+#pickerTab .picker-box{
+  height:980px!important;
+  min-height:980px!important;
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+#pickerTab .picker-top,
+#pickerTab .picker-controls{
+  flex:0 0 auto!important;
+}
+#pickerSelectView{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:hidden!important;
+}
+#pickerSelectView .picker-section{
+  min-height:0!important;
+}
+#pickerSelectView .picker-grid{
+  max-height:none!important;
+  flex:1 1 auto!important;
+  overflow-y:auto!important;
+}
+#pickerDrawView{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow-y:auto!important;
+  padding-bottom:24px!important;
+}
+#pickerDrawView .shuffle-zone{
+  height:300px!important;
+}
+#pickerDrawView .picked-zone{
+  margin-top:16px!important;
+}
+#pickerDrawView .result-tools,
+#pickerDrawView .after-buttons{
+  margin-top:14px!important;
+  padding-bottom:10px!important;
+}
+#pickerTab .team-picked-grid{
+  padding-bottom:18px!important;
+}
+
 </style>
 </head>
 <body id="home"><div class="bg-hearts"><span>♡</span><span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♡</span></div><main class="wrap"><section class="hero"><h1>뉴걸시티 Discord</h1></section>
