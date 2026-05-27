@@ -901,6 +901,81 @@ footer{
   padding-bottom:18px!important;
 }
 
+
+
+/* profile popup modal */
+.profile-popup{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:rgba(80,35,52,.35);
+  backdrop-filter:blur(6px);
+}
+.profile-popup.hidden{
+  display:none!important;
+}
+.profile-popup-card{
+  position:relative;
+  width:min(760px,94vw);
+  max-height:86vh;
+  overflow:auto;
+  padding:28px;
+  border-radius:32px;
+  border:1px solid #ffb8cf;
+  background:rgba(255,255,255,.94);
+  box-shadow:0 24px 70px rgba(255,105,158,.28);
+}
+.profile-popup-close{
+  position:absolute;
+  top:14px;
+  right:14px;
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:999px;
+  background:linear-gradient(135deg,#ff82ad,#ffb4ca);
+  color:#fff;
+  font-size:28px;
+  line-height:1;
+  cursor:pointer;
+}
+.profile-popup-card .profile{
+  display:block!important;
+  margin-top:0!important;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+}
+.profile-popup-card .profile-head{
+  padding-right:42px;
+}
+.profile-popup-card .buttons{
+  margin-top:14px;
+}
+.profile-popup-card .btn.home{
+  display:none!important;
+}
+@media(max-width:650px){
+  .profile-popup-card{
+    padding:22px 18px;
+  }
+  .profile-popup-card .profile-head{
+    flex-direction:column;
+    text-align:center;
+  }
+  .profile-popup-card .info,
+  .profile-popup-card .buttons{
+    grid-template-columns:1fr!important;
+  }
+  .profile-popup-card .btn.station{
+    grid-column:auto!important;
+  }
+}
+
 </style>
 </head>
 <body id="home"><div class="bg-hearts"><span>♡</span><span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♡</span></div><main class="wrap"><section class="hero"><h1>뉴걸시티 Discord</h1></section>
@@ -924,13 +999,20 @@ footer{
     </div>
     <div id="ladderResultBox" class="ladder-result-box"></div><div class="ladder-end-controls" id="ladderEndControls"><button onclick="ladderShowAll()">전체 결과</button><button onclick="ladderRegenerate()">재생성</button><button class="soft" onclick="ladderRetry()">다시하기</button></div>
   </div>
-</div><footer>Member Profile & Random Picker · Made by SINON</footer></main>
+</div>
+<div id="profilePopup" class="profile-popup hidden" onclick="closeProfilePopup(event)">
+  <div class="profile-popup-card" onclick="event.stopPropagation()">
+    <button class="profile-popup-close" onclick="closeProfilePopup()">×</button>
+    <div id="profilePopupContent"></div>
+  </div>
+</div>
+<footer>Member Profile & Random Picker · Made by SINON</footer></main>
 <script>
 const members=[
 ['소댕','1','https://www.sooplive.com/station/tq2918','평일 오후 7시 격주 주말 휴방 토요일 랜덤','구스구스덕 합방 모집 (~6/4)','https://www.sooplive.com/station/tq2918/post/195833581'],['고춘자','2','https://www.sooplive.com/station/lilgochun','평균 오후 7시 매일 공지'],['김뭉글♥','3','https://www.sooplive.com/station/andrmf','매주 평일 오후 12시'],['깅무우','4','https://www.sooplive.com/station/moowoos2','평일 오후 4~6시 사이 / 주말 전날 공지'],['남유리','5','https://www.sooplive.com/station/013001','매일 공지'],['다솜솜','6','https://www.sooplive.com/station/dasom52','평균 오후 8시 ~ 새벽','싱크룸 합방 모집 (~6/13)','https://www.sooplive.com/station/dasom52/post/196900567'],['다채롬♡','7','https://www.sooplive.com/station/wehappyeu','평균 오후 8~9시'],['도이지','8','https://www.sooplive.com/station/esoj001','평일 오후 7시 / 주말 오후 3시','프랫폴 합방 모집 (~5/28)','https://www.sooplive.com/station/esoj001/post/196639281'],['뚜민찡','9','https://www.sooplive.com/station/smlim321','월,금 오후 4시<br>화,목 오전 8시<br>토 공지 확인 / 수,일 휴방'],['루얀','10','https://www.sooplive.com/station/deyaan','일~수 오후 8시~오전 12시<br>금,토 오후 8시 / 목 휴방','다이아시티 입주자 모집 (~6/9)','https://www.sooplive.com/station/deyaan/post/195456021'],['리요','11','https://www.sooplive.com/station/imleeyo','평균 오후 6~7시 / 화,일 휴방'],['몽몽티','12','https://www.sooplive.com/station/sunblast01','공지 확인'],['서냥이','13','https://www.sooplive.com/station/nekolove','평균 오후 7~8시 / 휴방 랜덤'],['서무무','14','https://www.sooplive.com/station/hxru2242','1부 평균 오전 9~10시 / 2부 오후 10시'],['서현음','15','https://www.sooplive.com/station/nwoskzm05','화,목,금 1부 오전 7시 / 2부 오후 8시','버튜버 능지퀴즈쇼 모집 (~6/14)','https://www.sooplive.com/station/nwoskzm05/post/196066861'],['ε세요з','16','https://www.sooplive.com/station/juseyom','월,수,목 저녁 / 토,일 오후 / 매일 공지'],['소월냥_','17','https://www.sooplive.com/station/soweolnyag','매일 공지'],['소하＊','18','https://www.sooplive.com/station/sohasoha','오전 11~2시 or 오후 7~10시'],['송민트','19','https://www.sooplive.com/station/ad8hv5jk7d6','1부 오전 11시 / 2부 오후 7시 / 화요일 휴방'],['우시시_','20','https://www.sooplive.com/station/nwakdifl1','월~목 오후<br>금~일 오전or오후<br>시간&휴방 공지'],['이루비_','21','https://www.sooplive.com/station/erubys','평균 오후 3시 / 매일 공지'],['이름미정mi','22','https://www.sooplive.com/station/mijjung','매일 공지'],['이치유♥','23','https://www.sooplive.com/station/honoe1330','평일 오후 9시 / 주말 게릴라'],['일월♥','24','https://www.sooplive.com/station/dalcom282','공지'],['찌밍♥','25','https://www.sooplive.com/station/mg5261','매일 공지'],['찌빵.','26','https://www.sooplive.com/station/cms1615','평균 오후 6시'],['채루♥','27','https://www.sooplive.com/station/chaeru75','1부 오전 7시<br>2부 오후 6시<br>일요일 랜덤'],['츄리나','28','https://www.sooplive.com/station/eunsuchu','매일 공지'],['쿠로요미카네','29','https://www.sooplive.com/station/imaidu','매일 공지'],['하즐','30','https://www.sooplive.com/station/qptmxm45','매일 공지'],['♡효구리♡','31','https://www.sooplive.com/station/dngywn1234','평균 오후 6시'],['희호','32','https://www.sooplive.com/station/wo0o0ow','매일 공지'],['히루기♥','33','https://www.sooplive.com/station/hiroogi0901','평균 오후 9시']];
 const M=members.map(x=>({name:x[0],image:'./'+x[1]+'.png',link:x[2],time:x[3],contentTitle:x[4],contentLink:x[5],cardName:null}));
 members.splice(0,members.length,...M);
-memberGrid.innerHTML=members.map((m,i)=>`<a class="member-card" href="#member${i+1}"><img class="avatar" src="${m.image}"><strong>${m.cardName||m.name}</strong><span>프로필 보기</span></a>`).join('');
+memberGrid.innerHTML=members.map((m,i)=>`<a class="member-card" href="javascript:void(0)" onclick="openProfilePopup(${i})"><img class="avatar" src="${m.image}"><strong>${m.cardName||m.name}</strong><span>프로필 보기</span></a>`).join('');
 profiles.innerHTML=members.map((m,i)=>`<section id="member${i+1}" class="profile"><div class="profile-head"><img class="profile-img" src="${m.image}"><div><h2>${m.name}</h2></div></div><div class="info"><div><b>닉네임</b><br>${m.name}</div><div><b>방송시간</b><br>${m.time}</div><div><b>모집중인 컨텐츠</b><br>${m.contentLink?`<a href="${m.contentLink}" target="_blank">${m.contentTitle}</a>`:'-'}</div></div><div class="buttons"><a class="btn home" href="#home">닫기</a><a class="btn station" href="${m.link}" target="_blank">방송국 링크</a></div></section>`).join('');
 function showTab(t){membersTab.classList.toggle('hidden',t!='members');pickerTab.classList.toggle('hidden',t!='picker');ladderTab.classList.toggle('hidden',t!='ladder');document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',(t=='members'?0:t=='picker'?1:2)==i));if(t=='ladder')setTimeout(()=>{ladderRenderItems();ladderDraw();},80)}
 let pickerMode='random',pickerStep='member',pickerJoined=[],pickerLeaders=[],pickerCount=3,pickerResultList=[],pickerTargetResults=[],pickerLastPool=[],pickerRevealSpeed=1,pickerCurrentTeams=null,pickerDrawInterval=null,pickerMixInterval=null;
@@ -1509,6 +1591,39 @@ pickerRender();
     }
   });
 })();
+</script>
+
+
+<script>
+function openProfilePopup(i){
+  const m = members[i];
+  const content = document.getElementById('profilePopupContent');
+  content.innerHTML = `
+    <section class="profile">
+      <div class="profile-head">
+        <img class="profile-img" src="${m.image}">
+        <div><h2>${m.name}</h2></div>
+      </div>
+      <div class="info">
+        <div><b>닉네임</b><br>${m.name}</div>
+        <div><b>방송시간</b><br>${m.time}</div>
+        <div><b>모집중인 컨텐츠</b><br>${m.contentLink?`<a href="${m.contentLink}" target="_blank">${m.contentTitle}</a>`:'-'}</div>
+      </div>
+      <div class="buttons">
+        <a class="btn home" href="javascript:void(0)" onclick="closeProfilePopup()">닫기</a>
+        <a class="btn station" href="${m.link}" target="_blank">방송국 링크</a>
+      </div>
+    </section>
+  `;
+  document.getElementById('profilePopup').classList.remove('hidden');
+}
+function closeProfilePopup(e){
+  if(e && e.target.id !== 'profilePopup') return;
+  document.getElementById('profilePopup').classList.add('hidden');
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape') closeProfilePopup();
+});
 </script>
 
 </body></html>
