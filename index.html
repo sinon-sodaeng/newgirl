@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>뉴걸시티 Discord</title>
+<script>
+(function(){
+  var s=document.createElement('script');
+  s.src='https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
+  s.onerror=function(){
+    var b=document.createElement('script');
+    b.src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+    document.head.appendChild(b);
+  };
+  document.head.appendChild(s);
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;font-family:'Jua', sans-serif!important}
+body{
+  margin:0;min-height:100vh;font-family:'Jua', sans-serif;color:#4a2a35;
+  background:
+    radial-gradient(circle at 18% 12%,rgba(255,192,214,.75),transparent 25%),
+    radial-gradient(circle at 86% 18%,rgba(255,221,235,.85),transparent 26%),
+    radial-gradient(circle at 78% 88%,rgba(255,174,202,.5),transparent 34%),
+    linear-gradient(135deg,#fff8fb 0%,#ffe7f1 48%,#fff4ec 100%);
+  overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.55;
+  background:
+    linear-gradient(to top,rgba(255,130,174,.18),transparent 38%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 600'%3E%3Cg fill='%23ff8fb6' fill-opacity='.20'%3E%3Cpath d='M0 470h80V330h58v140h72V250h88v220h62V300h74v170h92V210h96v260h60V340h78v130h82V270h110v200h58V360h76v110h96V230h108v240h80V310h86v160h86v130H0z'/%3E%3Cpath d='M0 520h120V390h70v130h80V320h100v200h80V365h90v155h100V280h120v240h70V405h95v115h105V335h125v185h75V430h95v90h275v80H0z' fill-opacity='.16'/%3E%3C/g%3E%3Cg stroke='%23ff9fc1' stroke-opacity='.22' stroke-width='6' fill='none'%3E%3Cpath d='M120 330h40M120 365h40M250 285h52M250 325h52M420 335h44M590 245h50M590 290h50M900 305h60M1080 395h46M1260 270h58M1260 315h58'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center bottom;
+}
+body:after{
+  content:"♡";
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  color:rgba(255,105,158,.18);
+  font-size:54px;font-weight:900;
+  text-shadow:
+    8vw 10vh 0 rgba(255,105,158,.14),
+    22vw 18vh 0 rgba(255,145,184,.12),
+    38vw 9vh 0 rgba(255,105,158,.16),
+    58vw 16vh 0 rgba(255,145,184,.13),
+    78vw 8vh 0 rgba(255,105,158,.15),
+    92vw 22vh 0 rgba(255,145,184,.11),
+    14vw 42vh 0 rgba(255,105,158,.10),
+    70vw 44vh 0 rgba(255,145,184,.10),
+    86vw 58vh 0 rgba(255,105,158,.09);
+  transform:rotate(-14deg);
+}
+.bg-hearts{
+  position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;
+}
+.bg-hearts span{
+  position:absolute;color:rgba(255,105,158,.16);font-weight:900;line-height:1;
+  filter:drop-shadow(0 10px 20px rgba(255,120,166,.12));
+}
+.bg-hearts span:nth-child(1){left:7%;top:9%;font-size:34px;transform:rotate(-18deg)}
+.bg-hearts span:nth-child(2){left:19%;top:24%;font-size:58px;transform:rotate(13deg);opacity:.72}
+.bg-hearts span:nth-child(3){left:34%;top:13%;font-size:42px;transform:rotate(-6deg);opacity:.68}
+.bg-hearts span:nth-child(4){left:52%;top:27%;font-size:72px;transform:rotate(18deg);opacity:.45}
+.bg-hearts span:nth-child(5){left:73%;top:12%;font-size:46px;transform:rotate(-22deg);opacity:.7}
+.bg-hearts span:nth-child(6){left:88%;top:31%;font-size:64px;transform:rotate(9deg);opacity:.42}
+.bg-hearts span:nth-child(7){left:11%;top:58%;font-size:48px;transform:rotate(22deg);opacity:.38}
+.bg-hearts span:nth-child(8){left:67%;top:63%;font-size:38px;transform:rotate(-15deg);opacity:.36}
+.wrap{position:relative;z-index:1;width:min(1120px,92%);margin:auto;padding:42px 0 26px}.hero{text-align:center;padding:34px 20px;border-radius:34px;background:rgba(255,255,255,.74);border:1px solid rgba(255,182,205,.85);box-shadow:0 22px 55px rgba(255,126,171,.18),inset 0 1px 0 rgba(255,255,255,.9);backdrop-filter:blur(10px)}h1{margin:0;font-family:'Jua',sans-serif!important;font-weight:400;font-size:clamp(36px,7vw,72px);color:#ff5f9d;text-shadow:0 3px 0 #fff,0 10px 22px rgba(255,105,158,.22)}.tab-nav{display:flex;justify-content:center;gap:10px;margin:18px 0 22px}.tab-btn,.mode-btn,button{cursor:pointer}.tab-btn{padding:12px 22px;border-radius:999px;font-weight:900;color:#9b6173;background:#fff;border:1px solid #ffb8cf}.tab-btn.active,.pink{color:#fff;background:linear-gradient(135deg,#ff82ad,#ffb4ca)}.hidden{display:none}.member-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:18px;max-height:640px;overflow:auto;padding:6px 4px 12px}.member-card{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:10px;padding:16px 14px 14px;height:255px;min-height:255px;overflow:hidden;text-decoration:none;color:#5b3440;border-radius:30px;border:1px solid rgba(255,188,210,.95);background:linear-gradient(180deg,rgba(255,255,255,.88) 0%,rgba(255,255,255,.82) 68%,rgba(255,232,242,.95) 69%,rgba(255,244,249,.96) 100%);box-shadow:0 12px 28px rgba(255,136,176,.14);backdrop-filter:blur(8px);transition:transform .18s ease,box-shadow .18s ease}.member-card:hover{transform:translateY(-3px);box-shadow:0 18px 34px rgba(255,116,164,.2)}.avatar{width:148px;height:148px;object-fit:cover;border-radius:26px;border:4px solid #fff;box-shadow:0 8px 18px rgba(255,130,170,.18);flex:0 0 auto}.member-card strong{width:100%;min-height:34px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:22px;line-height:1.12;word-break:keep-all;color:#5b3440}.member-card span{margin-top:auto;width:100%;padding:8px 0 2px;text-align:center;font-size:15px;color:#ff6f9f}.profile{display:none;margin-top:34px;padding:28px;border-radius:32px;border:1px solid #ffb8cf;background:rgba(255,255,255,.78)}.profile:target{display:block}.profile-head{display:flex;gap:18px;align-items:center}.profile-img{width:118px;height:118px;border-radius:50%;object-fit:cover;border:5px solid #fff}.profile h2{color:#ff6f9f}.info{display:grid;grid-template-columns:1fr 1.15fr 1.15fr;gap:12px;margin:20px 0 14px}.info div{padding:14px 16px;border-radius:18px;background:#fff5f9;border:1px solid #ffc2d5;line-height:1.55}.info b{color:#ff78a6}.buttons{display:grid;grid-template-columns:1fr 1.15fr 1.15fr;gap:12px}.btn{display:flex;align-items:center;justify-content:center;min-height:42px;border-radius:999px;text-decoration:none;font-weight:900}.btn.home{color:#9b6173;background:#fff;border:1px solid #ffb8cf}.btn.station{grid-column:3;color:#fff;background:linear-gradient(135deg,#ff82ad,#ffb4ca);min-height:58px;border-radius:18px}.picker-box{padding:22px;border-radius:30px;background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(255,248,251,.66));border:1px solid rgba(255,188,210,.9);box-shadow:0 18px 45px rgba(255,140,180,.16);backdrop-filter:blur(10px)}.picker-box h2{text-align:center;color:#ff6f9f;font-size:30px}.picker-top{display:flex;justify-content:flex-end;gap:10px;margin-bottom:14px}.mode-btn{border:2px solid #ffb8cf;border-radius:999px;padding:11px 18px;font-weight:1000;color:#9b6173;background:#fff}.mode-btn.active{color:#ff5f96;border:3px solid #ff78a6;background:#fff7fb;box-shadow:0 0 0 4px rgba(255,120,166,.14)}.picker-controls,.picker-count{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin:12px 0}.picker-count{gap:8px}.picker-count b{min-width:34px;text-align:center;color:#ff6f9f;font-size:18px}.picker-controls button,.picker-count button,.result-tools button,.after-buttons button{border:0;border-radius:18px;padding:0 22px;min-height:48px;font-weight:1000;color:#fff;background:linear-gradient(135deg,#ff82ad,#ffb4ca);box-shadow:0 10px 22px rgba(255,135,174,.18)}.picker-count button{width:48px;min-width:48px;padding:0;border-radius:16px;font-size:20px}.picker-controls>button{min-width:108px}.result-tools button,.after-buttons button{min-width:160px;min-height:54px}button.soft{color:#9b6173!important;background:#fff!important;border:1px solid #ffb8cf!important;box-shadow:0 8px 18px rgba(255,158,188,.1)!important}.picker-layout{display:grid;grid-template-columns:1fr 1fr;gap:14px}.picker-section{padding:16px;border-radius:24px;background:rgba(255,255,255,.7);border:1px solid #ffbcd2}.picker-section h3{color:#ff6f9f}.picker-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));gap:12px}.picker-card{border:1px solid #ffbcd2;border-radius:22px;padding:12px;background:#fff;cursor:pointer;text-align:center}.picker-card img{width:78px;height:78px;object-fit:cover;border-radius:20px;border:3px solid #fff}.picker-card div{margin-top:8px;font-size:15px;font-weight:900;line-height:1.15;word-break:keep-all}.leader-result-card{cursor:default}.leader-result-card .front,.leader-result-card .back{outline:3px solid #f5b83b!important;border:3px solid #fff8d8!important;box-shadow:0 0 0 4px rgba(245,184,59,.18),0 10px 24px rgba(245,184,59,.22)!important}.leader-result-card .name{color:#b87900!important}.draw-stage{display:none;min-height:620px;background:#fff7fb;border:2px dashed #ff9dcc;border-radius:26px;padding:24px;position:relative;overflow:hidden;text-align:center}.shuffle-zone{height:340px;position:relative;border-radius:24px;background:rgba(255,255,255,.7);overflow:hidden}.shuffle-card,.draw-card{width:110px;height:160px;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);transition:transform .38s cubic-bezier(.2,.9,.25,1),left .38s,top .38s,opacity .25s;perspective:900px}.draw-card{z-index:20;pointer-events:none;transition:top .82s cubic-bezier(.22,.9,.24,1),left .82s cubic-bezier(.22,.9,.24,1),transform .82s cubic-bezier(.22,.9,.24,1),opacity .22s;filter:drop-shadow(0 14px 18px rgba(255,111,159,.28))}.draw-card.pop{left:50%!important;top:50%!important;transform:translate(-50%,-50%) scale(1.18) rotate(0deg)!important}.draw-card.to-bottom{top:calc(100% - 95px)!important;left:50%!important;transform:translate(-50%,-50%) scale(.96) rotate(0deg)!important}.picked-zone{margin-top:24px}.picked-grid{display:grid;grid-template-columns:repeat(auto-fit,120px);gap:14px;justify-content:center}.flip-card{height:160px;perspective:900px}.picked-grid>.flip-card{width:120px;justify-self:center}.flip-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .7s ease}.flip-card.open .flip-inner{transform:rotateY(180deg)}.front,.back{position:absolute;inset:0;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(255,158,188,.18);border:3px solid #fff;outline:2px solid rgba(255,111,159,.75)}.front{background:linear-gradient(135deg,#ff8fb6,#ffc6d8);color:#fff;font-size:38px;font-weight:900}.back{background:#fff;transform:rotateY(180deg)}.back img{width:88px;height:88px;object-fit:cover;border-radius:50%;border:5px solid #fff}.back .name{margin-top:9px;font-size:17px;font-weight:900;color:#ff4fa3;line-height:1.12;word-break:keep-all}.result-tools,.after-buttons{margin-top:20px;display:none;gap:12px;justify-content:center;flex-wrap:wrap}.team-result-card{min-height:230px;padding:18px;border-radius:24px;background:#fff;border:1px solid #ffbcd2}.team-result-card h3{text-align:center;color:#ff6f9f}.team-slot{display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));gap:14px;align-items:start}.team-slot .flip-card{height:150px}.title{color:#ff6f9f;font-weight:1000;margin-bottom:12px}footer{text-align:center;margin-top:34px;font-size:12px;color:rgba(130,77,94,.62)}@media(max-width:850px){.picker-layout,.info,.buttons{grid-template-columns:1fr}.btn.station{grid-column:auto}}
+
+.ladder-box{padding:24px;border-radius:30px;background:linear-gradient(180deg,rgba(255,255,255,.8),rgba(255,248,251,.68));border:1px solid rgba(255,188,210,.9);box-shadow:0 18px 45px rgba(255,140,180,.16);backdrop-filter:blur(10px)}
+.ladder-box h2{text-align:center;color:#ff6f9f;font-size:34px;margin:6px 0 8px}
+.ladder-help{text-align:center;color:#9b6173;font-size:15px;margin:0 0 18px}
+.ladder-inputs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ladder-inputs h3{color:#ff6f9f;margin:0 0 8px;font-size:22px}
+.ladder-inputs textarea{width:100%;min-height:150px;resize:vertical;border-radius:22px;border:1px solid #ffbcd2;background:#fff;padding:16px;font-size:18px;line-height:1.45;color:#5b3440;outline:none}
+.ladder-controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:16px 0}
+.ladder-controls button{border:0;border-radius:18px;padding:0 24px;min-height:50px;font-weight:1000;color:#fff;background:linear-gradient(135deg,#ff82ad,#ffb4ca);box-shadow:0 10px 22px rgba(255,135,174,.18)}
+.ladder-wrap{overflow:auto;border-radius:26px;background:rgba(255,255,255,.72);border:1px solid #ffbcd2;padding:12px}
+#ladderCanvas{display:block;min-width:900px;width:100%;height:560px}
+.ladder-result-box{margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.ladder-result-item{padding:13px 14px;border-radius:18px;background:#fff;border:1px solid #ffc2d5;color:#5b3440;font-size:17px;text-align:center}
+.ladder-result-item b{color:#ff5f9d}
+@media(max-width:850px){.ladder-inputs{grid-template-columns:1fr}}
+
+
+.ladder-box{padding:24px;border-radius:30px;background:linear-gradient(180deg,rgba(255,255,255,.8),rgba(255,248,251,.68));border:1px solid rgba(255,188,210,.9);box-shadow:0 18px 45px rgba(255,140,180,.16);backdrop-filter:blur(10px)}
+.ladder-box h2{text-align:center;color:#ff6f9f;font-size:34px;margin:6px 0 8px}.ladder-help{text-align:center;color:#9b6173;font-size:15px;margin:0 0 16px}
+.ladder-count{display:flex;gap:10px;justify-content:center;align-items:center;margin:10px 0 16px}.ladder-count button{width:48px;min-width:48px;height:48px;border:0;border-radius:16px;font-size:22px;font-weight:1000;color:#fff;background:linear-gradient(135deg,#ff82ad,#ffb4ca)}.ladder-count b{min-width:46px;text-align:center;color:#ff6f9f;font-size:24px}
+.ladder-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:14px}.ladder-item{padding:12px;border-radius:20px;background:#fff;border:1px solid #ffbcd2}.ladder-item span{display:block;text-align:center;color:#ff6f9f;font-size:16px;margin-bottom:7px}.ladder-item input{width:100%;height:42px;border-radius:14px;border:1px solid #ffc2d5;background:#fff7fb;padding:0 10px;text-align:center;font-size:17px;color:#5b3440;outline:none}
+.ladder-controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:16px 0}.ladder-controls button{border:0;border-radius:18px;padding:0 24px;min-height:50px;font-weight:1000;color:#fff;background:linear-gradient(135deg,#ff82ad,#ffb4ca);box-shadow:0 10px 22px rgba(255,135,174,.18)}
+.ladder-stage{position:relative;overflow:auto;border-radius:26px;background:rgba(255,255,255,.72);border:1px solid #ffbcd2;padding:12px;min-height:590px}#ladderCanvas{display:block;min-width:900px;width:100%;height:560px}
+.ladder-cover{position:absolute;left:12px;right:12px;top:82px;height:405px;border-radius:24px;background:linear-gradient(135deg,#ff82ad,#ffc0d4);border:4px solid #fff;color:#fff;font-size:120px;font-weight:1000;display:flex;align-items:center;justify-content:center;box-shadow:0 16px 36px rgba(255,111,159,.28);cursor:grab;user-select:none;touch-action:none;z-index:5}.ladder-cover:active{cursor:grabbing}
+.ladder-result-box{margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}.ladder-result-item{padding:13px 14px;border-radius:18px;background:#fff;border:1px solid #ffc2d5;color:#5b3440;font-size:17px;text-align:center}.ladder-result-item b{color:#ff5f9d}
+
+
+.ladder-top-inputs,.ladder-bottom-inputs{position:absolute;left:82px;right:82px;display:grid;gap:8px;z-index:3;pointer-events:auto}
+.ladder-top-inputs{top:18px}.ladder-bottom-inputs{bottom:18px}
+.ladder-top-inputs input,.ladder-bottom-inputs input{width:100%;height:42px;border-radius:14px;border:1px solid #ffc2d5;background:#fff;padding:0 8px;text-align:center;font-size:16px;color:#5b3440;outline:none;box-shadow:0 6px 14px rgba(255,150,185,.12)}
+.ladder-bottom-inputs input{background:#fff7fb;color:#ff5f9d}
+.ladder-stage{padding:12px!important;min-height:620px!important}
+#ladderCanvas{margin-top:54px;margin-bottom:54px}
+.ladder-cover{top:92px!important;height:430px!important}
+
+
+.ladder-run-buttons{display:grid;gap:8px;margin:8px 0 14px}
+.ladder-run-buttons button{border:1px solid #ffb8cf;border-radius:16px;min-height:42px;background:#fff;color:#ff5f9d;font-size:16px;font-weight:1000;cursor:pointer}
+.ladder-stage{overflow-x:auto!important;overflow-y:hidden!important;position:relative!important;padding:0!important;min-height:680px!important}
+#ladderCanvas{display:block!important;width:1000px!important;min-width:1000px!important;height:560px!important;margin:62px 0!important}
+.ladder-top-inputs,.ladder-bottom-inputs{position:absolute!important;left:0!important;right:auto!important;width:1000px!important;display:block!important;z-index:3!important;pointer-events:auto!important}
+.ladder-top-inputs{top:14px!important}.ladder-bottom-inputs{bottom:14px!important}
+.ladder-top-inputs input,.ladder-bottom-inputs input{position:absolute;width:110px!important;transform:translateX(-50%);height:42px;border-radius:14px;border:1px solid #ffc2d5;background:#fff;padding:0 8px;text-align:center;font-size:16px;color:#5b3440;outline:none;box-shadow:0 6px 14px rgba(255,150,185,.12)}
+.ladder-bottom-inputs input{background:#fff7fb;color:#ff5f9d}
+
+
+.ladder-stage{min-height:720px!important;overflow-x:auto!important;overflow-y:hidden!important}
+#ladderCanvas{margin-top:62px!important;margin-bottom:92px!important}
+.ladder-bottom-inputs{bottom:18px!important}
+.ladder-top-inputs input,.ladder-bottom-inputs input{
+  width:128px!important;
+  height:46px!important;
+  font-size:15px!important;
+  padding:0 10px!important;
+}
+.ladder-bottom-inputs input{
+  height:64px!important;
+  white-space:normal!important;
+  line-height:1.15!important;
+}
+
+
+/* ladder input fix */
+.ladder-stage{
+  position:relative!important;
+  overflow-x:auto!important;
+  overflow-y:visible!important;
+  padding:14px!important;
+  min-height:auto!important;
+}
+#ladderCanvas{
+  display:block!important;
+  width:1000px!important;
+  min-width:1000px!important;
+  height:560px!important;
+  margin:10px 0!important;
+  pointer-events:auto!important;
+}
+.ladder-top-inputs,.ladder-bottom-inputs{
+  position:relative!important;
+  left:auto!important;
+  right:auto!important;
+  top:auto!important;
+  bottom:auto!important;
+  width:1000px!important;
+  min-width:1000px!important;
+  display:grid!important;
+  gap:10px!important;
+  z-index:10!important;
+  pointer-events:auto!important;
+}
+.ladder-top-inputs input,.ladder-bottom-inputs textarea{
+  position:relative!important;
+  left:auto!important;
+  transform:none!important;
+  width:100%!important;
+  box-sizing:border-box!important;
+  border-radius:14px!important;
+  border:1px solid #ffc2d5!important;
+  background:#fff!important;
+  padding:8px 10px!important;
+  text-align:center!important;
+  font-size:16px!important;
+  color:#5b3440!important;
+  outline:none!important;
+  box-shadow:0 6px 14px rgba(255,150,185,.12)!important;
+  z-index:20!important;
+  pointer-events:auto!important;
+}
+.ladder-top-inputs input{height:44px!important}
+.ladder-bottom-inputs textarea{
+  height:74px!important;
+  resize:none!important;
+  line-height:1.25!important;
+  background:#fff7fb!important;
+  color:#ff5f9d!important;
+  font-family:'Jua',sans-serif!important;
+}
+
+
+/* ladder reference-style fix */
+.ladder-top-inputs,.ladder-bottom-inputs{
+  width:1000px!important;
+  min-width:1000px!important;
+  display:grid!important;
+  gap:10px!important;
+}
+.ladder-top-inputs input{
+  height:46px!important;
+  border-radius:999px!important;
+  background:linear-gradient(135deg,#ff82ad,#ffb4ca)!important;
+  color:#fff!important;
+  border:3px solid #fff!important;
+  font-size:18px!important;
+  font-weight:1000!important;
+  cursor:pointer!important;
+}
+.ladder-top-inputs input::placeholder{color:rgba(255,255,255,.85)!important}
+.ladder-bottom-inputs textarea{
+  height:58px!important;
+  border-radius:18px!important;
+  background:#fff!important;
+  color:#ff5f9d!important;
+  border:2px solid #ffc2d5!important;
+  font-size:17px!important;
+  font-weight:900!important;
+}
+#ladderCanvas{
+  margin:4px 0 6px!important;
+  height:520px!important;
+}
+.ladder-stage{
+  background:repeating-linear-gradient(0deg,rgba(255,182,205,.12) 0 2px,rgba(255,255,255,.72) 2px 34px)!important;
+}
+.ladder-run-buttons{display:none!important}
+
+
+/* ladder compact aligned inputs */
+.ladder-stage{
+  padding:12px 0!important;
+}
+.ladder-top-inputs,.ladder-bottom-inputs{
+  width:1000px!important;
+  min-width:1000px!important;
+  display:block!important;
+  position:relative!important;
+  height:44px!important;
+}
+.ladder-top-inputs input,.ladder-bottom-inputs textarea{
+  position:absolute!important;
+  width:82px!important;
+  transform:translateX(-50%)!important;
+  box-sizing:border-box!important;
+  text-align:center!important;
+}
+.ladder-top-inputs input{
+  height:34px!important;
+  padding:0 6px!important;
+  border-radius:999px!important;
+  font-size:14px!important;
+  line-height:34px!important;
+}
+.ladder-bottom-inputs textarea{
+  height:42px!important;
+  padding:5px 6px!important;
+  border-radius:13px!important;
+  font-size:13px!important;
+  line-height:1.15!important;
+  resize:none!important;
+  overflow:hidden!important;
+}
+#ladderCanvas{
+  margin:0!important;
+  width:1000px!important;
+  min-width:1000px!important;
+  height:500px!important;
+}
+
+
+/* exact center align fix */
+.ladder-stage{
+  overflow-x:auto!important;
+  overflow-y:visible!important;
+  padding:14px!important;
+}
+.ladder-inner{
+  position:relative!important;
+  width:1000px!important;
+  min-width:1000px!important;
+  margin:0 auto!important;
+  padding:42px 0 50px!important;
+}
+#ladderCanvas{
+  display:block!important;
+  width:1000px!important;
+  min-width:1000px!important;
+  height:500px!important;
+  margin:0!important;
+}
+.ladder-top-inputs,.ladder-bottom-inputs{
+  position:absolute!important;
+  left:0!important;
+  top:0!important;
+  width:1000px!important;
+  height:0!important;
+  display:block!important;
+  pointer-events:none!important;
+  z-index:20!important;
+}
+.ladder-bottom-inputs{top:auto!important;bottom:0!important}
+.ladder-top-inputs input,.ladder-bottom-inputs textarea{
+  position:absolute!important;
+  left:var(--x)!important;
+  transform:translateX(-50%)!important;
+  width:76px!important;
+  box-sizing:border-box!important;
+  pointer-events:auto!important;
+  text-align:center!important;
+  border:1px solid #ffc2d5!important;
+  box-shadow:0 5px 12px rgba(255,150,185,.12)!important;
+}
+.ladder-top-inputs input{
+  top:0!important;
+  height:32px!important;
+  padding:0 5px!important;
+  border-radius:999px!important;
+  font-size:13px!important;
+  background:linear-gradient(135deg,#ff82ad,#ffb4ca)!important;
+  color:#fff!important;
+}
+.ladder-bottom-inputs textarea{
+  bottom:0!important;
+  height:42px!important;
+  padding:5px!important;
+  border-radius:12px!important;
+  font-size:12px!important;
+  line-height:1.15!important;
+  resize:none!important;
+  overflow:hidden!important;
+  background:#fff7fb!important;
+  color:#ff5f9d!important;
+}
+
+
+.ladder-start-only{justify-content:center!important}
+.ladder-start-only button{min-width:220px!important}
+.ladder-end-controls{
+  display:none;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:16px 0 0;
+}
+.ladder-end-controls button{
+  border:0;
+  border-radius:18px;
+  padding:0 24px;
+  min-height:50px;
+  font-weight:1000;
+  color:#fff;
+  background:linear-gradient(135deg,#ff82ad,#ffb4ca);
+  box-shadow:0 10px 22px rgba(255,135,174,.18);
+}
+
+
+.ladder-bottom-inputs textarea{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding-top:13px!important;
+  padding-bottom:0!important;
+}
+
+
+.ladder-box{position:relative}
+.challenge-btn{
+  position:absolute;
+  top:18px;
+  right:18px;
+  border:0;
+  border-radius:999px;
+  padding:10px 20px;
+  font-size:16px;
+  font-weight:1000;
+  color:#fff;
+  background:linear-gradient(135deg,#ff82ad,#ffb4ca);
+  box-shadow:0 10px 22px rgba(255,135,174,.22);
+  cursor:pointer;
+  z-index:30;
+}
+.ladder-box.challenge-mode{
+  background:linear-gradient(180deg,rgba(30,24,18,.96),rgba(12,10,8,.94))!important;
+  border-color:#d9a93b!important;
+  box-shadow:0 18px 55px rgba(217,169,59,.25)!important;
+}
+.ladder-box.challenge-mode h2,
+.ladder-box.challenge-mode .ladder-help,
+.ladder-box.challenge-mode #ladderCountText{
+  color:#f5d06a!important;
+}
+.ladder-box.challenge-mode .challenge-btn{
+  background:linear-gradient(135deg,#f5d06a,#a97416)!important;
+  color:#1c1308!important;
+}
+.ladder-box.challenge-mode .ladder-stage{
+  background:repeating-linear-gradient(0deg,rgba(245,208,106,.10) 0 2px,rgba(20,16,12,.72) 2px 34px)!important;
+  border-color:#d9a93b!important;
+}
+.ladder-box.challenge-mode .ladder-top-inputs input{
+  background:linear-gradient(135deg,#f5d06a,#a97416)!important;
+  color:#1c1308!important;
+  border-color:#fff0b8!important;
+}
+.ladder-box.challenge-mode .ladder-bottom-inputs textarea{
+  background:#21180e!important;
+  color:#f5d06a!important;
+  border-color:#d9a93b!important;
+}
+.ladder-box.challenge-mode .ladder-end-controls button,
+.ladder-box.challenge-mode .ladder-controls button{
+  background:linear-gradient(135deg,#f5d06a,#a97416)!important;
+  color:#1c1308!important;
+}
+.ladder-box.challenge-mode .ladder-result-item{
+  background:#21180e!important;
+  border-color:#d9a93b!important;
+  color:#f5d06a!important;
+}
+.ladder-box.challenge-mode .ladder-result-item b{color:#fff0b8!important}
+
+
+.ladder-box.challenge-mode .ladder-count button{
+  background:linear-gradient(135deg,#f5d06a,#a97416)!important;
+  color:#1c1308!important;
+  box-shadow:0 10px 22px rgba(217,169,59,.22)!important;
+}
+.ladder-box.challenge-mode .ladder-count b{
+  color:#f5d06a!important;
+}
+
+
+.ladder-box.challenge-mode .ladder-stage::before{
+  content:"진짜 그 선택이 맞아?";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) rotate(-8deg);
+  font-size:72px;
+  font-weight:1000;
+  color:rgba(245,208,106,.13);
+  white-space:nowrap;
+  pointer-events:none;
+  z-index:1;
+}
+.ladder-box.challenge-mode #ladderCanvas,
+.ladder-box.challenge-mode .ladder-top-inputs,
+.ladder-box.challenge-mode .ladder-bottom-inputs{
+  position:relative;
+  z-index:2;
+}
+
+
+/* ladder input slightly bigger */
+.ladder-top-inputs input{
+  width:90px!important;
+  height:38px!important;
+  font-size:15px!important;
+  padding:0 7px!important;
+}
+.ladder-bottom-inputs textarea{
+  width:90px!important;
+  height:48px!important;
+  font-size:13.5px!important;
+  padding:7px 6px!important;
+}
+.ladder-inner{
+  padding:48px 0 56px!important;
+}
+
+
+/* reward vertical center fix after bigger input */
+.ladder-bottom-inputs textarea{
+  display:block!important;
+  height:48px!important;
+  line-height:34px!important;
+  padding:7px 6px!important;
+  overflow:hidden!important;
+}
+
+
+/* end control buttons vertical center fix */
+.ladder-end-controls button{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  line-height:1!important;
+  padding-top:0!important;
+  padding-bottom:0!important;
+}
+
+
+.ladderNameInput[readonly],
+.ladderRewardInput[readonly]{
+  cursor:pointer!important;
+  opacity:.92!important;
+}
+.ladderRewardInput[readonly]{
+  cursor:not-allowed!important;
+}
+
+
+
+/* team draw result layout fix */
+.team-picked-grid{
+  display:grid!important;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr))!important;
+  gap:14px!important;
+  justify-content:center!important;
+  align-items:start!important;
+}
+.team-picked-grid .team-result-card{
+  min-height:auto!important;
+  padding:16px!important;
+  border-radius:24px!important;
+  background:#fff!important;
+  border:1px solid #ffbcd2!important;
+}
+.team-picked-grid .team-result-card h3{
+  margin:0 0 12px!important;
+  text-align:center!important;
+  color:#ff6f9f!important;
+  font-size:22px!important;
+}
+.team-picked-grid .team-slot{
+  display:grid!important;
+  grid-template-columns:repeat(auto-fit,120px)!important;
+  gap:12px!important;
+  justify-content:center!important;
+  align-items:start!important;
+}
+.team-picked-grid .team-slot .flip-card{
+  width:120px!important;
+  height:150px!important;
+  justify-self:center!important;
+}
+@media(max-width:650px){
+  .team-picked-grid{
+    grid-template-columns:1fr!important;
+  }
+}
+
+</style>
+</head>
+<body id="home"><div class="bg-hearts"><span>♡</span><span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♡</span></div><main class="wrap"><section class="hero"><h1>뉴걸시티 Discord</h1></section>
+<div class="tab-nav"><button class="tab-btn active" onclick="showTab('members')">멤버 목록</button><button class="tab-btn" onclick="showTab('picker')">랜덤뽑기</button><button class="tab-btn" onclick="showTab('ladder')">사다리타기</button></div>
+<div id="membersTab"><h3>MEMBER LIST</h3><section class="member-grid" id="memberGrid"></section><div id="profiles"></div></div>
+<div id="pickerTab" class="hidden"><div class="picker-box"><h2>스트리머 랜덤/팀뽑기</h2><div class="picker-top"><button id="randomModeBtn" class="mode-btn active" onclick="pickerSetMode('random')">랜덤뽑기</button><button id="teamModeBtn" class="mode-btn" onclick="pickerSetMode('team')">팀뽑기</button></div><div class="picker-controls" id="pickerMainControls"><div class="picker-count" id="pickerCountBox"><button onclick="pickerChangeCount(-1)">−</button><b id="pickerCount">3</b><button onclick="pickerChangeCount(1)">＋</button></div><button onclick="pickerAddAll()">전체추가</button><button class="soft" onclick="pickerClear()">전체해제</button><button id="pickerStartBtn" onclick="pickerStart()">뽑기 시작</button></div><div id="pickerSelectView" class="picker-layout"><div class="picker-section"><h3 id="pickerLeftTitle">멤버 카드</h3><div class="picker-grid" id="pickerMemberGrid"></div></div><div class="picker-section"><h3 id="pickerRightTitle">참여 멤버</h3><div class="picker-grid" id="pickerJoinGrid"></div></div></div><div id="pickerDrawView" class="draw-stage"><div class="title" id="pickerDrawTitle">카드 섞는 중...</div><div class="shuffle-zone" id="pickerShuffleZone"></div><div class="picked-zone"><div class="title">뽑힌 카드</div><div class="picked-grid" id="pickerPickedGrid"></div></div><div class="result-tools" id="pickerResultTools"><button id="pickerRevealBtn" onclick="pickerRevealResults()">결과확인</button><button class="soft" onclick="pickerChangeSpeed()">결과확인 배속 <span id="pickerSpeedText">1x</span></button></div><div class="after-buttons" id="pickerAfterButtons"><button onclick="pickerRetry()">다시하기</button><button class="soft" onclick="pickerGoHome()">처음으로</button></div></div></div></div>
+
+
+<div id="ladderTab" class="hidden">
+  <div class="ladder-box" id="ladderBox"><button class="challenge-btn" id="challengeBtn" onclick="ladderChallenge()">도전</button>
+    <h2>사다리타기</h2>
+    <p class="ladder-help">상단에는 이름, 하단에는 보상을 직접 적어줘. 적용 후 상단 이름 버튼을 누르면 생성된 연결선만 타고 내려가!</p>
+    <div class="ladder-count" id="ladderCountControls"><button onclick="ladderChangeCount(-1)">−</button><b id="ladderCountText">4</b><button onclick="ladderChangeCount(1)">＋</button></div>
+    <div class="ladder-controls ladder-start-only" id="ladderStartControls"><button onclick="ladderStart()">적용하고 시작하기</button></div><div class="ladder-run-buttons" id="ladderRunButtons"></div>
+    <div class="ladder-stage" id="ladderStage">
+      <div class="ladder-inner">
+        <div class="ladder-top-inputs" id="ladderTopInputs"></div>
+        <canvas id="ladderCanvas" width="1000" height="500"></canvas>
+        <div class="ladder-bottom-inputs" id="ladderBottomInputs"></div>
+      </div>
+    </div>
+    <div id="ladderResultBox" class="ladder-result-box"></div><div class="ladder-end-controls" id="ladderEndControls"><button onclick="ladderShowAll()">전체 결과</button><button onclick="ladderRegenerate()">재생성</button><button class="soft" onclick="ladderRetry()">다시하기</button></div>
+  </div>
+</div><footer>Member Profile & Random Picker · Made by SINON</footer></main>
+<script>
+const members=[
+['소댕','1','https://www.sooplive.com/station/tq2918','평일 오후 7시 격주 주말 휴방 토요일 랜덤','구스구스덕 합방 모집 (~6/4)','https://www.sooplive.com/station/tq2918/post/195833581'],['고춘자','2','https://www.sooplive.com/station/lilgochun','평균 오후 7시 매일 공지'],['김뭉글♥','3','https://www.sooplive.com/station/andrmf','매주 평일 오후 12시'],['깅무우','4','https://www.sooplive.com/station/moowoos2','평일 오후 4~6시 사이 / 주말 전날 공지'],['남유리','5','https://www.sooplive.com/station/013001','매일 공지'],['다솜솜','6','https://www.sooplive.com/station/dasom52','평균 오후 8시 ~ 새벽','싱크룸 합방 모집 (~6/13)','https://www.sooplive.com/station/dasom52/post/196900567'],['다채롬♡','7','https://www.sooplive.com/station/wehappyeu','평균 오후 8~9시'],['도이지','8','https://www.sooplive.com/station/esoj001','평일 오후 7시 / 주말 오후 3시','프랫폴 합방 모집 (~5/28)','https://www.sooplive.com/station/esoj001/post/196639281'],['뚜민찡','9','https://www.sooplive.com/station/smlim321','월,금 오후 4시<br>화,목 오전 8시<br>토 공지 확인 / 수,일 휴방'],['루얀','10','https://www.sooplive.com/station/deyaan','일~수 오후 8시~오전 12시<br>금,토 오후 8시 / 목 휴방','다이아시티 입주자 모집 (~6/9)','https://www.sooplive.com/station/deyaan/post/195456021'],['리요','11','https://www.sooplive.com/station/imleeyo','평균 오후 6~7시 / 화,일 휴방'],['몽몽티','12','https://www.sooplive.com/station/sunblast01','공지 확인'],['서냥이','13','https://www.sooplive.com/station/nekolove','평균 오후 7~8시 / 휴방 랜덤'],['서무무','14','https://www.sooplive.com/station/hxru2242','1부 평균 오전 9~10시 / 2부 오후 10시'],['서현음','15','https://www.sooplive.com/station/nwoskzm05','화,목,금 1부 오전 7시 / 2부 오후 8시','버튜버 능지퀴즈쇼 모집 (~6/14)','https://www.sooplive.com/station/nwoskzm05/post/196066861'],['ε세요з','16','https://www.sooplive.com/station/juseyom','월,수,목 저녁 / 토,일 오후 / 매일 공지'],['소월냥_','17','https://www.sooplive.com/station/soweolnyag','매일 공지'],['소하＊','18','https://www.sooplive.com/station/sohasoha','오전 11~2시 or 오후 7~10시'],['송민트','19','https://www.sooplive.com/station/ad8hv5jk7d6','1부 오전 11시 / 2부 오후 7시 / 화요일 휴방'],['우시시_','20','https://www.sooplive.com/station/nwakdifl1','월~목 오후<br>금~일 오전or오후<br>시간&휴방 공지'],['이루비_','21','https://www.sooplive.com/station/erubys','평균 오후 3시 / 매일 공지'],['이름미정mi','22','https://www.sooplive.com/station/mijjung','매일 공지'],['이치유♥','23','https://www.sooplive.com/station/honoe1330','평일 오후 9시 / 주말 게릴라'],['일월♥','24','https://www.sooplive.com/station/dalcom282','공지'],['찌밍♥','25','https://www.sooplive.com/station/mg5261','매일 공지'],['찌빵.','26','https://www.sooplive.com/station/cms1615','평균 오후 6시'],['채루♥','27','https://www.sooplive.com/station/chaeru75','1부 오전 7시<br>2부 오후 6시<br>일요일 랜덤'],['츄리나','28','https://www.sooplive.com/station/eunsuchu','매일 공지'],['쿠로요미카네','29','https://www.sooplive.com/station/imaidu','매일 공지'],['하즐','30','https://www.sooplive.com/station/qptmxm45','매일 공지'],['♡효구리♡','31','https://www.sooplive.com/station/dngywn1234','평균 오후 6시'],['희호','32','https://www.sooplive.com/station/wo0o0ow','매일 공지'],['히루기♥','33','https://www.sooplive.com/station/hiroogi0901','평균 오후 9시']];
+const M=members.map(x=>({name:x[0],image:'./'+x[1]+'.png',link:x[2],time:x[3],contentTitle:x[4],contentLink:x[5],cardName:null}));
+members.splice(0,members.length,...M);
+memberGrid.innerHTML=members.map((m,i)=>`<a class="member-card" href="#member${i+1}"><img class="avatar" src="${m.image}"><strong>${m.cardName||m.name}</strong><span>프로필 보기</span></a>`).join('');
+profiles.innerHTML=members.map((m,i)=>`<section id="member${i+1}" class="profile"><div class="profile-head"><img class="profile-img" src="${m.image}"><div><h2>${m.name}</h2></div></div><div class="info"><div><b>닉네임</b><br>${m.name}</div><div><b>방송시간</b><br>${m.time}</div><div><b>모집중인 컨텐츠</b><br>${m.contentLink?`<a href="${m.contentLink}" target="_blank">${m.contentTitle}</a>`:'-'}</div></div><div class="buttons"><a class="btn home" href="#home">닫기</a><a class="btn station" href="${m.link}" target="_blank">방송국 링크</a></div></section>`).join('');
+function showTab(t){membersTab.classList.toggle('hidden',t!='members');pickerTab.classList.toggle('hidden',t!='picker');ladderTab.classList.toggle('hidden',t!='ladder');document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',(t=='members'?0:t=='picker'?1:2)==i));if(t=='ladder')setTimeout(ladderDraw,60)}
+let pickerMode='random',pickerStep='member',pickerJoined=[],pickerLeaders=[],pickerCount=3,pickerResultList=[],pickerTargetResults=[],pickerLastPool=[],pickerRevealSpeed=1,pickerCurrentTeams=null,pickerDrawInterval=null,pickerMixInterval=null;
+function dn(m){return (m.cardName||m.name).replace('<br>',' ')}function img(i){return members[i].image}function nm(i){return members[i].cardName||members[i].name}
+function pickerCard(i,s){return `<div class="picker-card" onclick="${s?'pickerRemove':'pickerAdd'}(${i})"><img src="${img(i)}" onerror="this.style.visibility='hidden'"><div>${nm(i)}</div></div>`}
+function resultCard(i){return `<div class="flip-card open leader-result-card"><div class="flip-inner"><div class="front">?</div><div class="back"><img src="${img(i)}"><div class="name">${dn(members[i])}</div></div></div></div>`}
+function pickerRender(){let sel=pickerMode=='team'&&pickerStep=='leader'?pickerLeaders:pickerJoined;pickerCountBox.style.display=pickerMode=='random'?'flex':'none';pickerLeftTitle.textContent=pickerMode=='team'&&pickerStep=='leader'?'팀장 선택':'멤버 카드';pickerRightTitle.textContent=pickerMode=='team'&&pickerStep=='leader'?'선택된 팀장':'참여 멤버';document.getElementById('pickerStartBtn').textContent=(pickerMode=='team'&&pickerStep=='leader')?'팀장 확정':'뽑기 시작';randomModeBtn.classList.toggle('active',pickerMode=='random');teamModeBtn.classList.toggle('active',pickerMode=='team');pickerMemberGrid.innerHTML=members.map((_,i)=>sel.includes(i)||pickerMode=='team'&&pickerStep=='member'&&pickerLeaders.includes(i)?'':pickerCard(i,false)).join('')||'모두 선택됨';pickerJoinGrid.innerHTML=sel.length?sel.map(i=>pickerCard(i,true)).join(''):'카드를 눌러 추가';pickerCount=Math.max(1,Math.min(pickerCount,pickerJoined.length||1));document.getElementById('pickerCount').textContent=pickerCount}
+function pickerSetMode(m){pickerMode=m;pickerStep=m=='team'?'leader':'member';pickerJoined=[];pickerLeaders=[];pickerGoHome(false);pickerRender()}function pickerAdd(i){(pickerMode=='team'&&pickerStep=='leader'?pickerLeaders:pickerJoined).push(i);pickerRender()}function pickerRemove(i){if(pickerMode=='team'&&pickerStep=='leader')pickerLeaders=pickerLeaders.filter(v=>v!==i);else pickerJoined=pickerJoined.filter(v=>v!==i);pickerRender()}function pickerAddAll(){if(pickerMode=='team'&&pickerStep=='leader')pickerLeaders=members.map((_,i)=>i);else pickerJoined=members.map((_,i)=>i).filter(i=>!pickerLeaders.includes(i));pickerRender()}function pickerClear(){if(pickerMode=='team'&&pickerStep=='leader')pickerLeaders=[];else pickerJoined=[];pickerRender()}function pickerChangeCount(n){pickerCount=Math.max(1,Math.min(pickerJoined.length||1,pickerCount+n));pickerRender()}function sh(a){return a.slice().sort(()=>Math.random()-.5)}
+function hidden(i,id){return `<div class="flip-card" id="${id}"><div class="flip-inner"><div class="front">?</div><div class="back"><img src="${img(i)}"><div class="name">${dn(members[i])}</div></div></div></div>`}
+function sc(i){return `<div class="shuffle-card" data-id="${i}"><div class="flip-inner"><div class="front">?</div><div class="back"><img src="${img(i)}"><div class="name">${dn(members[i])}</div></div></div></div>`}
+function move(){document.querySelectorAll('.shuffle-card').forEach(c=>{c.style.left=12+Math.random()*76+'%';c.style.top=18+Math.random()*62+'%';c.style.transform=`translate(-50%,-50%) rotate(${Math.random()*720-360}deg)`})}
+function pickerStart(){if(pickerMode=='team'&&pickerStep=='leader'){if(pickerLeaders.length<2)return alert('팀장을 2명 이상 골라줘!');pickerStep='member';pickerJoined=[];
+
+
+
+let ladderCount=4, ladderData={names:[],rewards:[],bars:[],started:false,rows:22}, ladderAnim=null, ladderChallengeMode=false;
+function ladderInputX(i){let g=ladderGeom();return g.left+i*g.gap}
+function ladderRenderItems(){
+  ladderCountText.textContent=ladderCount;
+  let oldN=[...document.querySelectorAll('.ladderNameInput')].map(i=>i.value);
+  let oldR=[...document.querySelectorAll('.ladderRewardInput')].map(i=>i.value);
+  let gap=(1000-164)/(ladderCount-1);
+  ladderTopInputs.innerHTML=Array.from({length:ladderCount},(_,i)=>`<input class="ladderNameInput" style="--x:${82+i*gap}px" value="${oldN[i]||''}" placeholder="이름 ${i+1}" title="적용 후 누르면 출발">`).join('');
+  ladderBottomInputs.innerHTML=Array.from({length:ladderCount},(_,i)=>`<textarea class="ladderRewardInput" style="--x:${82+i*gap}px" placeholder="보상 ${i+1}">${oldR[i]||''}</textarea>`).join('');
+}
+function ladderChangeCount(n){ladderCount=Math.max(2,Math.min(10,ladderCount+n));ladderRenderItems();ladderRetry();}
+function ladderNames(){return [...document.querySelectorAll('.ladderNameInput')].map((i,idx)=>i.value.trim()||`이름 ${idx+1}`)}
+function ladderRewards(){return [...document.querySelectorAll('.ladderRewardInput')].map((i,idx)=>i.value.trim()||`보상 ${idx+1}`)}
+function ladderChallenge(){
+  ladderChallengeMode=!ladderChallengeMode;
+  ladderBox.classList.toggle('challenge-mode',ladderChallengeMode);
+  challengeBtn.textContent=ladderChallengeMode?'도전 ON':'도전';
+  ladderDraw();
+}
+function ladderRegenerate(){
+  if(ladderChallengeMode)return alert('도전 모드에서는 재생성할 수 없어!');
+  ladderStart();
+}
+function ladderStart(){
+  let names=ladderNames(),rewards=ladderRewards(),n=names.length,bars=[],rows=Math.max(24,n*7);
+  let minTarget=Math.max(n-1, 2*n);
+  let maxTarget=Math.max(minTarget, 3*n);
+  let target=minTarget+Math.floor(Math.random()*(maxTarget-minTarget+1)); // 총 2n~3n개 정도
+
+  function makeCandidate(a){
+    let rowA=2+Math.floor(Math.random()*(rows-4));
+    let diagonal=Math.random()<.3;
+
+    // 최대 약 30도까지만 기울어지게 제한
+    let g=ladderGeom();
+    let maxRowDiff=Math.max(1,Math.floor((Math.tan(Math.PI/6)*g.gap)/g.rowGap));
+    maxRowDiff=Math.min(maxRowDiff,2);
+
+    let rowDiff=diagonal ? (1+Math.floor(Math.random()*maxRowDiff)) : 0;
+    let rowB=rowA + (Math.random()<.5 ? rowDiff : -rowDiff);
+    if(rowB<1 || rowB>rows-1) return null;
+    return {a,b:a+1,rowA,rowB};
+  }
+
+  function canAdd(c){
+    return !bars.some(x=>{
+      let points=[{c:x.a,r:x.rowA},{c:x.b,r:x.rowB}];
+
+      let tooClose = points.some(p=>
+        (p.c===c.a && Math.abs(p.r-c.rowA)<=1) ||
+        (p.c===c.b && Math.abs(p.r-c.rowB)<=1)
+      );
+
+      let cross = false;
+      if(x.a===c.a && x.b===c.b){
+        cross = ((x.rowA-c.rowA) * (x.rowB-c.rowB) < 0);
+      }
+
+      return tooClose || cross;
+    });
+  }
+
+  // 1) 세로줄 사이마다 최소 1개씩 보장
+  for(let gap=0; gap<n-1; gap++){
+    let added=false;
+    for(let t=0;t<300;t++){
+      let c=makeCandidate(gap);
+      if(c && canAdd(c)){bars.push(c);added=true;break;}
+    }
+    // 정말 안 들어가면 안전한 가로줄로 강제 추가
+    if(!added){
+      let rowA=2+gap*2;
+      bars.push({a:gap,b:gap+1,rowA,rowB:rowA});
+    }
+  }
+
+  // 2) 나머지는 랜덤 추가
+  let tries=0;
+  while(bars.length<target && tries<2500){
+    tries++;
+    let a=Math.floor(Math.random()*(n-1));
+    let c=makeCandidate(a);
+    if(c && canAdd(c)) bars.push(c);
+  }
+
+  bars.sort((x,y)=>Math.min(x.rowA,x.rowB)-Math.min(y.rowA,y.rowB));
+  ladderData={names,rewards,bars,started:true,rows};
+  ladderResultBox.innerHTML='';
+  ladderStartControls.style.display='none';
+  ladderCountControls.style.display='none';
+  ladderEndControls.style.display='none';
+  ladderRunButtons.innerHTML='';
+  document.querySelectorAll('.ladderNameInput').forEach((el,i)=>{el.readOnly=true;el.onclick=()=>ladderRun(i);});
+  document.querySelectorAll('.ladderRewardInput').forEach(el=>{el.readOnly=true;});
+  ladderDraw();
+}
+function ladderGeom(){const c=ladderCanvas,w=c.width,h=c.height,n=ladderCount;return{top:18,bottom:h-18,left:82,right:w-82,gap:(w-164)/(n-1),rowGap:(h-36)/(ladderData.rows||24)};}
+function ladderTrace(start){
+  let g=ladderGeom(), col=start, pts=[{x:g.left+col*g.gap,y:g.top}];
+  let currentRow=0;
+  let used=new Set();
+
+  for(let guard=0; guard<500; guard++){
+    let candidates=[];
+    ladderData.bars.forEach((bar,idx)=>{
+      if(used.has(idx)) return;
+      if(bar.a===col && bar.rowA>=currentRow) candidates.push({idx,bar,hereRow:bar.rowA,nextCol:bar.b,nextRow:bar.rowB});
+      if(bar.b===col && bar.rowB>=currentRow) candidates.push({idx,bar,hereRow:bar.rowB,nextCol:bar.a,nextRow:bar.rowA});
+    });
+
+    candidates.sort((x,y)=>x.hereRow-y.hereRow);
+    if(!candidates.length) break;
+
+    let c=candidates[0];
+    used.add(c.idx);
+
+    let hereX=g.left+col*g.gap;
+    let hereY=g.top+c.hereRow*g.rowGap;
+    pts.push({x:hereX,y:hereY});
+
+    col=c.nextCol;
+    let nextX=g.left+col*g.gap;
+    let nextY=g.top+c.nextRow*g.rowGap;
+    pts.push({x:nextX,y:nextY});
+
+    currentRow=c.nextRow+0.001;
+  }
+
+  pts.push({x:g.left+col*g.gap,y:g.bottom});
+  return {end:col,pts};
+}
+function ladderDraw(pathPts, progress){
+  const c=ladderCanvas,ctx=c.getContext('2d');ctx.clearRect(0,0,c.width,c.height);
+  let g=ladderGeom(),n=ladderCount;
+  ctx.lineCap='round';ctx.lineJoin='round';
+  ctx.strokeStyle=ladderChallengeMode?'#7b5a18':'#ffc2d5';ctx.lineWidth=8;
+  for(let i=0;i<n;i++){let x=g.left+i*g.gap;ctx.beginPath();ctx.moveTo(x,g.top);ctx.lineTo(x,g.bottom);ctx.stroke();}
+  ctx.strokeStyle=ladderChallengeMode?'#f5d06a':'#ff91b8';ctx.lineWidth=7;
+  ladderData.bars.forEach(b=>{
+    let x1=g.left+b.a*g.gap, x2=g.left+b.b*g.gap;
+    let y1=g.top+b.rowA*g.rowGap, y2=g.top+b.rowB*g.rowGap;
+    ctx.beginPath();
+    ctx.moveTo(x1,y1);
+    ctx.lineTo(x2,y2);
+    ctx.stroke();
+  });
+  if(pathPts&&pathPts.length>1){
+    let segs=[],total=0;
+    for(let i=1;i<pathPts.length;i++){
+      let a=pathPts[i-1],b=pathPts[i],len=Math.hypot(b.x-a.x,b.y-a.y);
+      segs.push({a,b,len});total+=len;
+    }
+    let target=total*Math.min(1,Math.max(0,progress||0)),used=0,last=pathPts[0];
+    ctx.strokeStyle=ladderChallengeMode?'#ffe27a':'#ff4f95';ctx.lineWidth=10;ctx.beginPath();ctx.moveTo(last.x,last.y);
+    for(const s of segs){
+      if(used+s.len<=target){ctx.lineTo(s.b.x,s.b.y);last=s.b;used+=s.len;}
+      else{
+        let t=(target-used)/s.len;
+        last={x:s.a.x+(s.b.x-s.a.x)*t,y:s.a.y+(s.b.y-s.a.y)*t};
+        ctx.lineTo(last.x,last.y);break;
+      }
+    }
+    ctx.stroke();
+    ctx.fillStyle=ladderChallengeMode?'#ffe27a':'#ff4f95';ctx.beginPath();ctx.arc(last.x,last.y,10,0,Math.PI*2);ctx.fill();
+  }
+}
+function ladderRun(idx){
+  if(!ladderData.started)return;
+  if(ladderAnim)cancelAnimationFrame(ladderAnim);
+  let tr=ladderTrace(idx), start=null, duration=1500;
+  ladderResultBox.innerHTML='';
+  function frame(ts){
+    if(!start)start=ts;
+    let p=Math.min(1,(ts-start)/duration);
+    ladderDraw(tr.pts,p);
+    if(p<1)ladderAnim=requestAnimationFrame(frame);
+    else {ladderResultBox.innerHTML=`<div class="ladder-result-item"><b>${ladderData.names[idx]}</b> → ${ladderData.rewards[tr.end]}</div>`;ladderEndControls.style.display='flex';ladderEndControls.querySelectorAll('button')[1].style.display=ladderChallengeMode?'none':'inline-flex';}
+  }
+  ladderAnim=requestAnimationFrame(frame);
+}
+function ladderShowAll(){
+  if(!ladderData.started)return alert('먼저 적용하고 시작하기를 눌러줘!');
+  ladderDraw();
+  ladderResultBox.innerHTML=ladderData.names.map((v,i)=>`<div class="ladder-result-item"><b>${v}</b> → ${ladderData.rewards[ladderTrace(i).end]}</div>`).join('');ladderEndControls.style.display='flex';ladderEndControls.querySelectorAll('button')[1].style.display=ladderChallengeMode?'none':'inline-flex';
+}
+function ladderRetry(){if(ladderAnim)cancelAnimationFrame(ladderAnim);ladderData={names:[],rewards:[],bars:[],started:false};ladderResultBox.innerHTML='';ladderRunButtons.innerHTML='';ladderEndControls.style.display='none';ladderStartControls.style.display='flex';ladderCountControls.style.display='flex';challengeBtn.disabled=false;ladderEndControls.querySelectorAll('button')[1].style.display='inline-flex';document.querySelectorAll('.ladderNameInput').forEach(el=>{el.readOnly=false;el.onclick=null;});document.querySelectorAll('.ladderRewardInput').forEach(el=>{el.readOnly=false;});ladderDraw();}
+setTimeout(()=>{ladderRenderItems();ladderDraw();},0);
+
+pickerRender();return}if(pickerMode=='random'){if(!pickerJoined.length)return alert('참여 멤버를 먼저 넣어줘!');pickerStartRandomDraw();return}if(!pickerJoined.length)return alert('팀원을 선택해줘!');pickerStartTeamDraw()}
+function openDraw(t){pickerPickedGrid.classList.remove('team-picked-grid');pickerSelectView.style.display='none';pickerMainControls.style.display='none';pickerDrawView.style.display='block';pickerDrawTitle.textContent=t;clearInterval(pickerDrawInterval);clearInterval(pickerMixInterval);window.pickerSkipRequested=false;pickerResultTools.style.display='flex';pickerRevealBtn.style.display='none';pickerAfterButtons.style.display='none';pickerPickedGrid.innerHTML=''}
+function pickerStartRandomDraw(){openDraw('카드 섞는 중...');pickerResultList=[];pickerLastPool=sh(pickerJoined);pickerTargetResults=pickerLastPool.slice(0,pickerCount);pickerShuffleZone.innerHTML=pickerLastPool.map(sc).join('');move();let m=0;pickerMixInterval=setInterval(()=>{move();if(++m>8){clearInterval(pickerMixInterval);pickOne()}},420)}
+function pickOne(){let n=0;pickerDrawInterval=setInterval(()=>{let idx=pickerTargetResults[n];pickerResultList.push(idx);let o=document.querySelector(`.shuffle-card[data-id="${idx}"]`);if(o)o.style.opacity=0;let f=document.createElement('div');f.className='draw-card';f.innerHTML='<div class="flip-inner"><div class="front">?</div><div class="back"><img src="'+img(idx)+'"><div class="name">'+dn(members[idx])+'</div></div></div>';pickerShuffleZone.appendChild(f);requestAnimationFrame(()=>requestAnimationFrame(()=>f.classList.add('pop')));setTimeout(()=>{if(!window.pickerSkipRequested)f.classList.add('to-bottom')},560);setTimeout(()=>{if(window.pickerSkipRequested)return;if(o)o.remove();f.remove();pickerPickedGrid.innerHTML+=hidden(idx,'picked'+n);n++;if(n>=pickerCount){clearInterval(pickerDrawInterval);pickerRevealBtn.style.display='inline-block'}},1350)},1420)}
+function pickerRevealResults(){
+  pickerRevealBtn.style.display='none';
+  let gap=500/pickerRevealSpeed;
+
+  pickerResultList.forEach((_,i)=>{
+    setTimeout(()=>{
+      const card=document.getElementById('picked'+i);
+      if(card) card.classList.add('open');
+    },i*gap);
+  });
+
+  setTimeout(()=>{
+    pickerAfterButtons.style.display='flex';
+  },pickerResultList.length*gap+400);
+}
+function pickerStartTeamDraw(){openDraw('팀 카드 섞는 중...');let shuffled=sh(pickerJoined),teams=pickerLeaders.map(i=>[i]);shuffled.forEach((m,i)=>teams[i%teams.length].push(m));pickerCurrentTeams=teams;pickerLastPool=shuffled;pickerShuffleZone.innerHTML=pickerLastPool.map(sc).join('');move();let m=0;pickerMixInterval=setInterval(()=>{move();if(++m>8){clearInterval(pickerMixInterval);pickTeam(teams)}},420)}
+function pickTeam(teams){
+  pickerPickedGrid.classList.add('team-picked-grid');
+  pickerPickedGrid.innerHTML=teams.map((t,ti)=>`<div class="team-result-card"><h3>${dn(members[t[0]])}팀</h3><div class="team-slot" id="teamSlot${ti}">${resultCard(t[0])}</div></div>`).join('');
+  let ti=0;
+
+  function nextTeam(){
+    if(ti>=teams.length){
+      pickerDrawTitle.textContent='팀 카드 배치 완료!';
+      
+      pickerRevealBtn.style.display='inline-block';
+      pickerRevealBtn.onclick=()=>pickerRevealTeamResults(teams);
+      return;
+    }
+
+    const slot=ti;
+    const arr=teams[slot].slice(1);
+    pickerDrawTitle.textContent=dn(members[teams[slot][0]])+'팀 촤라락 뽑는 중...';
+
+    if(!arr.length){
+      ti++;
+      setTimeout(nextTeam,500);
+      return;
+    }
+
+    arr.forEach((idx,local)=>{
+      setTimeout(()=>{
+        if(window.pickerSkipRequested)return;
+
+        let o=document.querySelector(`.shuffle-card[data-id="${idx}"]`);
+        if(o)o.style.opacity=0;
+
+        let f=document.createElement('div');
+        f.className='draw-card';
+        f.style.left=(50+(local-(arr.length-1)/2)*7)+'%';
+        f.style.top='50%';
+        f.innerHTML='<div class="flip-inner"><div class="front">?</div><div class="back"><img src="'+img(idx)+'"><div class="name">'+dn(members[idx])+'</div></div></div>';
+        pickerShuffleZone.appendChild(f);
+
+        requestAnimationFrame(()=>requestAnimationFrame(()=>{
+          f.classList.add('pop');
+          f.style.transform=`translate(-50%,-50%) scale(1.12) rotate(${(local-(arr.length-1)/2)*5}deg)`;
+        }));
+
+        setTimeout(()=>{
+          if(!window.pickerSkipRequested)f.classList.add('to-bottom');
+        },420+local*70);
+
+        setTimeout(()=>{
+          if(window.pickerSkipRequested)return;
+          if(o)o.remove();
+          f.remove();
+          document.getElementById('teamSlot'+slot).innerHTML+=hidden(idx,`teamCard-${slot}-${local+1}`);
+        },1180+local*70);
+      },local*90);
+    });
+
+    setTimeout(()=>{
+      ti++;
+      nextTeam();
+    },1450+arr.length*120);
+  }
+
+  nextTeam();
+}
+function pickerRevealTeamResults(teams){pickerRevealBtn.style.display='none';pickerDrawTitle.textContent='팀뽑기 결과 공개!';let max=Math.max(...teams.map(t=>t.length)),d=0,gap=550/pickerRevealSpeed;for(let r=1;r<max;r++)for(let ti=0;ti<teams.length;ti++){if(teams[ti][r]===undefined)continue;setTimeout(()=>document.getElementById(`teamCard-${ti}-${r}`)?.classList.add('open'),d);d+=gap}setTimeout(()=>{pickerAfterButtons.style.display='flex';},d+400)}
+function pickerChangeSpeed(){pickerRevealSpeed=pickerRevealSpeed==1?2:pickerRevealSpeed==2?4:1;pickerSpeedText.textContent=pickerRevealSpeed+'x'}function pickerRetry(){pickerMode=='random'?pickerStartRandomDraw():pickerStartTeamDraw()}function pickerGoHome(reset){pickerDrawView.style.display='none';pickerSelectView.style.display='grid';pickerMainControls.style.display='flex';pickerShuffleZone.innerHTML='';pickerPickedGrid.innerHTML='';if(reset!==false){pickerJoined=[];if(pickerMode=='team'){pickerStep='leader';pickerLeaders=[]}}pickerRender()}
+
+
+
+let ladderCount=4, ladderData={names:[],rewards:[],bars:[],started:false,rows:22}, ladderAnim=null, ladderChallengeMode=false;
+function ladderInputX(i){let g=ladderGeom();return g.left+i*g.gap}
+function ladderRenderItems(){
+  ladderCountText.textContent=ladderCount;
+  let oldN=[...document.querySelectorAll('.ladderNameInput')].map(i=>i.value);
+  let oldR=[...document.querySelectorAll('.ladderRewardInput')].map(i=>i.value);
+  let gap=(1000-164)/(ladderCount-1);
+  ladderTopInputs.innerHTML=Array.from({length:ladderCount},(_,i)=>`<input class="ladderNameInput" style="--x:${82+i*gap}px" value="${oldN[i]||''}" placeholder="이름 ${i+1}" title="적용 후 누르면 출발">`).join('');
+  ladderBottomInputs.innerHTML=Array.from({length:ladderCount},(_,i)=>`<textarea class="ladderRewardInput" style="--x:${82+i*gap}px" placeholder="보상 ${i+1}">${oldR[i]||''}</textarea>`).join('');
+}
+function ladderChangeCount(n){ladderCount=Math.max(2,Math.min(10,ladderCount+n));ladderRenderItems();ladderRetry();}
+function ladderNames(){return [...document.querySelectorAll('.ladderNameInput')].map((i,idx)=>i.value.trim()||`이름 ${idx+1}`)}
+function ladderRewards(){return [...document.querySelectorAll('.ladderRewardInput')].map((i,idx)=>i.value.trim()||`보상 ${idx+1}`)}
+function ladderChallenge(){
+  ladderChallengeMode=!ladderChallengeMode;
+  ladderBox.classList.toggle('challenge-mode',ladderChallengeMode);
+  challengeBtn.textContent=ladderChallengeMode?'도전 ON':'도전';
+  ladderDraw();
+}
+function ladderRegenerate(){
+  if(ladderChallengeMode)return alert('도전 모드에서는 재생성할 수 없어!');
+  ladderStart();
+}
+function ladderStart(){
+  let names=ladderNames(),rewards=ladderRewards(),n=names.length,bars=[],rows=Math.max(24,n*7);
+  let minTarget=Math.max(n-1, 2*n);
+  let maxTarget=Math.max(minTarget, 3*n);
+  let target=minTarget+Math.floor(Math.random()*(maxTarget-minTarget+1)); // 총 2n~3n개 정도
+
+  function makeCandidate(a){
+    let rowA=2+Math.floor(Math.random()*(rows-4));
+    let diagonal=Math.random()<.3;
+
+    // 최대 약 30도까지만 기울어지게 제한
+    let g=ladderGeom();
+    let maxRowDiff=Math.max(1,Math.floor((Math.tan(Math.PI/6)*g.gap)/g.rowGap));
+    maxRowDiff=Math.min(maxRowDiff,2);
+
+    let rowDiff=diagonal ? (1+Math.floor(Math.random()*maxRowDiff)) : 0;
+    let rowB=rowA + (Math.random()<.5 ? rowDiff : -rowDiff);
+    if(rowB<1 || rowB>rows-1) return null;
+    return {a,b:a+1,rowA,rowB};
+  }
+
+  function canAdd(c){
+    return !bars.some(x=>{
+      let points=[{c:x.a,r:x.rowA},{c:x.b,r:x.rowB}];
+
+      let tooClose = points.some(p=>
+        (p.c===c.a && Math.abs(p.r-c.rowA)<=1) ||
+        (p.c===c.b && Math.abs(p.r-c.rowB)<=1)
+      );
+
+      let cross = false;
+      if(x.a===c.a && x.b===c.b){
+        cross = ((x.rowA-c.rowA) * (x.rowB-c.rowB) < 0);
+      }
+
+      return tooClose || cross;
+    });
+  }
+
+  // 1) 세로줄 사이마다 최소 1개씩 보장
+  for(let gap=0; gap<n-1; gap++){
+    let added=false;
+    for(let t=0;t<300;t++){
+      let c=makeCandidate(gap);
+      if(c && canAdd(c)){bars.push(c);added=true;break;}
+    }
+    // 정말 안 들어가면 안전한 가로줄로 강제 추가
+    if(!added){
+      let rowA=2+gap*2;
+      bars.push({a:gap,b:gap+1,rowA,rowB:rowA});
+    }
+  }
+
+  // 2) 나머지는 랜덤 추가
+  let tries=0;
+  while(bars.length<target && tries<2500){
+    tries++;
+    let a=Math.floor(Math.random()*(n-1));
+    let c=makeCandidate(a);
+    if(c && canAdd(c)) bars.push(c);
+  }
+
+  bars.sort((x,y)=>Math.min(x.rowA,x.rowB)-Math.min(y.rowA,y.rowB));
+  ladderData={names,rewards,bars,started:true,rows};
+  ladderResultBox.innerHTML='';
+  ladderStartControls.style.display='none';
+  ladderCountControls.style.display='none';
+  ladderEndControls.style.display='none';
+  ladderRunButtons.innerHTML='';
+  document.querySelectorAll('.ladderNameInput').forEach((el,i)=>{el.readOnly=true;el.onclick=()=>ladderRun(i);});
+  document.querySelectorAll('.ladderRewardInput').forEach(el=>{el.readOnly=true;});
+  ladderDraw();
+}
+function ladderGeom(){const c=ladderCanvas,w=c.width,h=c.height,n=ladderCount;return{top:18,bottom:h-18,left:82,right:w-82,gap:(w-164)/(n-1),rowGap:(h-36)/(ladderData.rows||24)};}
+function ladderTrace(start){
+  let g=ladderGeom(), col=start, pts=[{x:g.left+col*g.gap,y:g.top}];
+  let currentRow=0;
+  let used=new Set();
+
+  for(let guard=0; guard<500; guard++){
+    let candidates=[];
+    ladderData.bars.forEach((bar,idx)=>{
+      if(used.has(idx)) return;
+      if(bar.a===col && bar.rowA>=currentRow) candidates.push({idx,bar,hereRow:bar.rowA,nextCol:bar.b,nextRow:bar.rowB});
+      if(bar.b===col && bar.rowB>=currentRow) candidates.push({idx,bar,hereRow:bar.rowB,nextCol:bar.a,nextRow:bar.rowA});
+    });
+
+    candidates.sort((x,y)=>x.hereRow-y.hereRow);
+    if(!candidates.length) break;
+
+    let c=candidates[0];
+    used.add(c.idx);
+
+    let hereX=g.left+col*g.gap;
+    let hereY=g.top+c.hereRow*g.rowGap;
+    pts.push({x:hereX,y:hereY});
+
+    col=c.nextCol;
+    let nextX=g.left+col*g.gap;
+    let nextY=g.top+c.nextRow*g.rowGap;
+    pts.push({x:nextX,y:nextY});
+
+    currentRow=c.nextRow+0.001;
+  }
+
+  pts.push({x:g.left+col*g.gap,y:g.bottom});
+  return {end:col,pts};
+}
+function ladderDraw(pathPts, progress){
+  const c=ladderCanvas,ctx=c.getContext('2d');ctx.clearRect(0,0,c.width,c.height);
+  let g=ladderGeom(),n=ladderCount;
+  ctx.lineCap='round';ctx.lineJoin='round';
+  ctx.strokeStyle=ladderChallengeMode?'#7b5a18':'#ffc2d5';ctx.lineWidth=8;
+  for(let i=0;i<n;i++){let x=g.left+i*g.gap;ctx.beginPath();ctx.moveTo(x,g.top);ctx.lineTo(x,g.bottom);ctx.stroke();}
+  ctx.strokeStyle=ladderChallengeMode?'#f5d06a':'#ff91b8';ctx.lineWidth=7;
+  ladderData.bars.forEach(b=>{
+    let x1=g.left+b.a*g.gap, x2=g.left+b.b*g.gap;
+    let y1=g.top+b.rowA*g.rowGap, y2=g.top+b.rowB*g.rowGap;
+    ctx.beginPath();
+    ctx.moveTo(x1,y1);
+    ctx.lineTo(x2,y2);
+    ctx.stroke();
+  });
+  if(pathPts&&pathPts.length>1){
+    let segs=[],total=0;
+    for(let i=1;i<pathPts.length;i++){
+      let a=pathPts[i-1],b=pathPts[i],len=Math.hypot(b.x-a.x,b.y-a.y);
+      segs.push({a,b,len});total+=len;
+    }
+    let target=total*Math.min(1,Math.max(0,progress||0)),used=0,last=pathPts[0];
+    ctx.strokeStyle=ladderChallengeMode?'#ffe27a':'#ff4f95';ctx.lineWidth=10;ctx.beginPath();ctx.moveTo(last.x,last.y);
+    for(const s of segs){
+      if(used+s.len<=target){ctx.lineTo(s.b.x,s.b.y);last=s.b;used+=s.len;}
+      else{
+        let t=(target-used)/s.len;
+        last={x:s.a.x+(s.b.x-s.a.x)*t,y:s.a.y+(s.b.y-s.a.y)*t};
+        ctx.lineTo(last.x,last.y);break;
+      }
+    }
+    ctx.stroke();
+    ctx.fillStyle=ladderChallengeMode?'#ffe27a':'#ff4f95';ctx.beginPath();ctx.arc(last.x,last.y,10,0,Math.PI*2);ctx.fill();
+  }
+}
+function ladderRun(idx){
+  if(!ladderData.started)return;
+  if(ladderAnim)cancelAnimationFrame(ladderAnim);
+  let tr=ladderTrace(idx), start=null, duration=1500;
+  ladderResultBox.innerHTML='';
+  function frame(ts){
+    if(!start)start=ts;
+    let p=Math.min(1,(ts-start)/duration);
+    ladderDraw(tr.pts,p);
+    if(p<1)ladderAnim=requestAnimationFrame(frame);
+    else {ladderResultBox.innerHTML=`<div class="ladder-result-item"><b>${ladderData.names[idx]}</b> → ${ladderData.rewards[tr.end]}</div>`;ladderEndControls.style.display='flex';ladderEndControls.querySelectorAll('button')[1].style.display=ladderChallengeMode?'none':'inline-flex';}
+  }
+  ladderAnim=requestAnimationFrame(frame);
+}
+function ladderShowAll(){
+  if(!ladderData.started)return alert('먼저 적용하고 시작하기를 눌러줘!');
+  ladderDraw();
+  ladderResultBox.innerHTML=ladderData.names.map((v,i)=>`<div class="ladder-result-item"><b>${v}</b> → ${ladderData.rewards[ladderTrace(i).end]}</div>`).join('');ladderEndControls.style.display='flex';ladderEndControls.querySelectorAll('button')[1].style.display=ladderChallengeMode?'none':'inline-flex';
+}
+function ladderRetry(){if(ladderAnim)cancelAnimationFrame(ladderAnim);ladderData={names:[],rewards:[],bars:[],started:false};ladderResultBox.innerHTML='';ladderRunButtons.innerHTML='';ladderEndControls.style.display='none';ladderStartControls.style.display='flex';ladderCountControls.style.display='flex';challengeBtn.disabled=false;ladderEndControls.querySelectorAll('button')[1].style.display='inline-flex';document.querySelectorAll('.ladderNameInput').forEach(el=>{el.readOnly=false;el.onclick=null;});document.querySelectorAll('.ladderRewardInput').forEach(el=>{el.readOnly=false;});ladderDraw();}
+setTimeout(()=>{ladderRenderItems();ladderDraw();},0);
+
+pickerRender();
+</script></body></html>
