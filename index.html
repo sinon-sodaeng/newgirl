@@ -543,6 +543,44 @@ body:after{
   }
 }
 
+
+
+/* random picker list scroll fix */
+#pickerSelectView{
+  max-height:620px;
+  overflow:hidden;
+}
+#pickerSelectView .picker-section{
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+}
+#pickerSelectView .picker-grid{
+  max-height:520px;
+  overflow-y:auto;
+  padding-right:6px;
+}
+#pickerSelectView .picker-grid::-webkit-scrollbar{
+  width:8px;
+}
+#pickerSelectView .picker-grid::-webkit-scrollbar-thumb{
+  background:#ffb8cf;
+  border-radius:999px;
+}
+#pickerSelectView .picker-grid::-webkit-scrollbar-track{
+  background:#fff3f8;
+  border-radius:999px;
+}
+@media(max-width:850px){
+  #pickerSelectView{
+    max-height:720px;
+    overflow-y:auto;
+  }
+  #pickerSelectView .picker-grid{
+    max-height:300px;
+  }
+}
+
 </style>
 </head>
 <body id="home"><div class="bg-hearts"><span>♡</span><span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♡</span></div><main class="wrap"><section class="hero"><h1>뉴걸시티 Discord</h1></section>
