@@ -1070,6 +1070,39 @@ footer{
   margin-top:34px!important;
 }
 
+
+
+/* v47: ladder input position fix - keep labels close to ladder lines */
+#ladderTab .ladder-stage{
+  min-height:650px!important;
+  max-height:650px!important;
+  padding:14px 10px!important;
+  overflow:hidden!important;
+}
+#ladderTab .ladder-inner{
+  padding:34px 0 46px!important;
+}
+#ladderTab .ladder-top-inputs{
+  top:8px!important;
+}
+#ladderTab .ladder-bottom-inputs{
+  bottom:8px!important;
+}
+#ladderTab .ladder-top-inputs input{
+  top:0!important;
+  height:32px!important;
+  line-height:32px!important;
+}
+#ladderTab .ladder-bottom-inputs textarea{
+  bottom:0!important;
+  height:34px!important;
+  line-height:22px!important;
+  padding:5px 6px!important;
+}
+#ladderTab #ladderCanvas{
+  height:520px!important;
+}
+
 </style>
 </head>
 <body id="home"><div class="bg-hearts"><span>♡</span><span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♥</span><span>♡</span><span>♡</span></div><main class="wrap"><section class="hero"><h1>뉴걸시티 Discord</h1></section>
@@ -1226,7 +1259,7 @@ function ladderGeom(){
   const c=ladderCanvas;
   const stage=document.getElementById('ladderStage');
   const w=Math.max(620, Math.min(820, Math.round((stage&&stage.clientWidth?stage.clientWidth:860)-24)));
-  const h=500;
+  const h=520;
   if(c.width!==w)c.width=w;
   if(c.height!==h)c.height=h;
   const n=ladderCount;
@@ -1513,7 +1546,7 @@ function ladderGeom(){
   const c=ladderCanvas;
   const stage=document.getElementById('ladderStage');
   const w=Math.max(620, Math.min(820, Math.round((stage&&stage.clientWidth?stage.clientWidth:860)-24)));
-  const h=500;
+  const h=520;
   if(c.width!==w)c.width=w;
   if(c.height!==h)c.height=h;
   const n=ladderCount;
@@ -1631,7 +1664,7 @@ pickerRender();
     const c = ladderCanvas;
     const w = ladderUsableWidth();
     if(c.width !== w) c.width = w;
-    if(c.height !== 500) c.height = 500;
+    if(c.height !== 520) c.height = 520;
 
     const n = ladderCount;
     const side = Math.max(58, Math.min(86, w * 0.075));
